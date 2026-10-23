@@ -8,3 +8,10 @@ Estude como o Java representa dados e avalia expressões, como manipular texto e
 - [Operadores, expressões e conversões](./operadores-expressoes-e-conversoes.md)
 - [Texto com `String` e `StringBuilder`](./texto-string-e-stringbuilder.md)
 - [Data e hora com `java.time`](./data-e-hora-java-time.md)
+
+## Exemplos de console
+
+- [Tipos primitivos e wrappers](../src/01-valores-texto-e-datas/tipos-primitivos-e-wrappers/TiposPrimitivosEWrappersExample.java)
+- [Operadores, expressões e conversões](../src/01-valores-texto-e-datas/operadores-expressoes-e-conversoes/OperadoresExpressoesEConversoesExample.java)
+- [Texto com `String` e `StringBuilder`](../src/01-valores-texto-e-datas/texto-string-e-stringbuilder/TextoStringEStringBuilderExample.java)
+- [Data e hora](../src/01-valores-texto-e-datas/data-e-hora-java-time/DataEHoraJavaTimeExample.java)

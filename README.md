@@ -28,7 +28,18 @@ Este repositório organiza os estudos para a certificação **Oracle Certified P
 4. Revise os casos-limite indicados nos assuntos: eles são especialmente úteis para questões de múltipla escolha.
 5. Use as listas de tópicos e os desafios dos READMEs para acompanhar seu progresso.
 
-O projeto tem estrutura Java simples, com código-fonte em `src/`. Exemplos de estudo podem ser adicionados em pacotes separados por domínio, sem misturar exercícios de assuntos diferentes.
+Os exemplos ficam em subpastas de `src/`, separadas por domínio e assunto.
+
+## Executar os exemplos
+
+Cada assunto tem uma classe Java independente, com `main` e saída pelo console, organizada em `src/<domínio>/<assunto>/`. Por exemplo, para compilar e executar o exemplo de arrays no PowerShell:
+
+```powershell
+javac -d target\bin src\05-arrays-e-colecoes\arrays\ArraysExample.java
+java -cp target\bin ArraysExample
+```
+
+Os nomes das pastas dos domínios começam com números ou contêm hífens, que não são válidos em nomes de pacotes Java. Por isso, os exemplos usam o pacote padrão e nomes de classe exclusivos. O arquivo `.classpath` inclui cada pasta de assunto como raiz de código-fonte para que o projeto Eclipse/Java continue reconhecendo esses exemplos.
 
 ## Referências
 

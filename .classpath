@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src" excluding="01-valores-texto-e-datas/**|02-controle-de-fluxo/**|03-poo/**|04-excecoes/**|05-arrays-e-colecoes/**|06-streams-e-lambdas/**|07-modulos-java/**|08-concorrencia/**|09-io/**|10-jdbc/**|11-localizacao/**"/>
+	<classpathentry kind="src" path="src/01-valores-texto-e-datas/tipos-primitivos-e-wrappers"/>
+	<classpathentry kind="src" path="src/01-valores-texto-e-datas/operadores-expressoes-e-conversoes"/>
+	<classpathentry kind="src" path="src/01-valores-texto-e-datas/texto-string-e-stringbuilder"/>
+	<classpathentry kind="src" path="src/01-valores-texto-e-datas/data-e-hora-java-time"/>
+	<classpathentry kind="src" path="src/02-controle-de-fluxo/condicionais-e-switch"/>
+	<classpathentry kind="src" path="src/02-controle-de-fluxo/lacos-e-desvios"/>
+	<classpathentry kind="src" path="src/02-controle-de-fluxo/metodos-sobrecarga-e-varargs"/>
+	<classpathentry kind="src" path="src/03-poo/classes-objetos-e-encapsulamento"/>
+	<classpathentry kind="src" path="src/03-poo/construtores-e-inicializacao"/>
+	<classpathentry kind="src" path="src/03-poo/heranca-sobrescrita-e-polimorfismo"/>
+	<classpathentry kind="src" path="src/03-poo/interfaces-e-enums"/>
+	<classpathentry kind="src" path="src/03-poo/records-sealed-e-pattern-matching"/>
+	<classpathentry kind="src" path="src/04-excecoes/hierarquia-e-tipos-de-excecao"/>
+	<classpathentry kind="src" path="src/04-excecoes/try-catch-finally-e-multicatch"/>
+	<classpathentry kind="src" path="src/04-excecoes/try-with-resources"/>
+	<classpathentry kind="src" path="src/05-arrays-e-colecoes/arrays"/>
+	<classpathentry kind="src" path="src/05-arrays-e-colecoes/generics"/>
+	<classpathentry kind="src" path="src/05-arrays-e-colecoes/interfaces-e-colecoes"/>
+	<classpathentry kind="src" path="src/05-arrays-e-colecoes/comparacao-e-ordenacao"/>
+	<classpathentry kind="src" path="src/06-streams-e-lambdas/interfaces-funcionais-lambdas-e-referencias"/>
+	<classpathentry kind="src" path="src/06-streams-e-lambdas/streams-e-pipelines"/>
+	<classpathentry kind="src" path="src/06-streams-e-lambdas/collectors-e-optional"/>
+	<classpathentry kind="src" path="src/07-modulos-java/sistema-de-modulos-jpms"/>
+	<classpathentry kind="src" path="src/08-concorrencia/threads-e-executors"/>
+	<classpathentry kind="src" path="src/08-concorrencia/sincronizacao-e-visibilidade"/>
+	<classpathentry kind="src" path="src/08-concorrencia/apis-concorrentes-e-colecoes"/>
+	<classpathentry kind="src" path="src/09-io/streams-readers-e-writers"/>
+	<classpathentry kind="src" path="src/09-io/nio2-path-e-files"/>
+	<classpathentry kind="src" path="src/09-io/serializacao"/>
+	<classpathentry kind="src" path="src/10-jdbc/conexoes-e-comandos"/>
+	<classpathentry kind="src" path="src/10-jdbc/resultset-recursos-e-transacoes"/>
+	<classpathentry kind="src" path="src/11-localizacao/locale-e-bundles"/>
+	<classpathentry kind="src" path="src/11-localizacao/formatacao-e-parsing"/>
 	<classpathentry kind="output" path="target/bin"/>
 </classpath>

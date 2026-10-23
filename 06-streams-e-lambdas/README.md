@@ -7,3 +7,9 @@ Estude a programação funcional da biblioteca padrão: funções representadas 
 - [Interfaces funcionais, lambdas e method references](./interfaces-funcionais-lambdas-e-referencias.md)
 - [Streams e pipelines](./streams-e-pipelines.md)
 - [Collectors e `Optional`](./collectors-e-optional.md)
+
+## Exemplos de console
+
+- [Interfaces funcionais, lambdas e method references](../src/06-streams-e-lambdas/interfaces-funcionais-lambdas-e-referencias/InterfacesFuncionaisLambdasEReferenciasExample.java)
+- [Streams e pipelines](../src/06-streams-e-lambdas/streams-e-pipelines/StreamsEPipelinesExample.java)
+- [Collectors e `Optional`](../src/06-streams-e-lambdas/collectors-e-optional/CollectorsEOptionalExample.java)
