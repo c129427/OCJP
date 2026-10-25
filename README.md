@@ -30,6 +30,10 @@ Este repositório organiza os estudos para a certificação **Oracle Certified P
 
 Os exemplos ficam em subpastas de `src/`, separadas por domínio e assunto.
 
+## Preferências do Copilot
+
+As preferências persistentes do projeto ficam em [`.github/copilot-instructions.md`](.github/copilot-instructions.md). A skill [`super-memoria`](.github/skills/super-memoria/SKILL.md) orienta como mantê-las; a configuração inicial determina que as respostas sejam sempre em português brasileiro.
+
 ## Executar os exemplos
 
 Cada assunto tem uma classe Java independente, com `main` e saída pelo console, organizada em `src/<domínio>/<assunto>/`. Por exemplo, para compilar e executar o exemplo de arrays no PowerShell:
