@@ -2,6 +2,10 @@
 
 Estude a criação e coordenação de tarefas simultâneas, a visibilidade de memória e os mecanismos da biblioteca `java.util.concurrent`.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./08-concorrencia.svg) — threads, executors, sincronização e APIs concorrentes.
+
 ## Assuntos
 
 - [Threads e executors](./threads-e-executors.md)

@@ -19,3 +19,9 @@ Use as instruções em `.github/copilot-instructions.md` como fonte única das p
 ## Configuração inicial
 
 - Idioma das respostas: português brasileiro, sempre.
+
+## Prompt reutilizável: mapa mental
+
+> Crie um mapa mental visual para revisão sobre **[TEMA]**, usando somente o conteúdo de **[PASTA OU FONTES]**. Siga o estilo da referência `01-valores-texto-e-datas/1720992799.webp`: formato horizontal, fundo claro quadriculado, conceito principal central em letras manuscritas sobre uma mancha azul-clara, ramificações com setas orgânicas escuras e tópicos distribuídos ao redor, sem cartões rígidos. Use títulos manuscritos, texto explicativo simples e legível, destaques coloridos discretos e hierarquia clara. Organize os pontos em 6–8 blocos adequados ao tema (por exemplo: conceito, elementos, funcionamento, exemplos, aplicações, vantagens, cuidados e resumo). Resuma com frases curtas e comparações úteis; preserve a terminologia original, escreva em português brasileiro e não acrescente informações que não estejam nas fontes. Entregue como SVG horizontal, legível em tela e impressão, e inclua um link no README da pasta quando fizer parte do projeto.
+
+Ao criar novos mapas mentais, aplique esse padrão como configuração padrão do projeto; adapte a quantidade e os nomes dos blocos ao conteúdo, sem sacrificar precisão nem legibilidade.

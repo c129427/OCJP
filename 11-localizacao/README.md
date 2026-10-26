@@ -2,6 +2,10 @@
 
 Estude como adaptar recursos, números, moedas e datas a diferentes idiomas e regiões sem codificar formatos locais manualmente.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./11-localizacao.svg) — `Locale`, bundles, formatação e parsing localizado.
+
 ## Assuntos
 
 - [`Locale` e bundles de recursos](./locale-e-bundles.md)

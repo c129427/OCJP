@@ -2,6 +2,10 @@
 
 Estude estruturas indexadas e o Collections Framework, incluindo parametrização com generics, comparações e ordenação.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./05-arrays-e-colecoes.svg) — arrays, generics, coleções e ordenação.
+
 ## Assuntos
 
 - [Arrays](./arrays.md)

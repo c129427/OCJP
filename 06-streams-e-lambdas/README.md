@@ -2,6 +2,10 @@
 
 Estude a programação funcional da biblioteca padrão: funções representadas por interfaces, pipelines de streams e operações de redução e coleta.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./06-streams-e-lambdas.svg) — interfaces funcionais, lambdas, streams, collectors e `Optional`.
+
 ## Assuntos
 
 - [Interfaces funcionais, lambdas e method references](./interfaces-funcionais-lambdas-e-referencias.md)

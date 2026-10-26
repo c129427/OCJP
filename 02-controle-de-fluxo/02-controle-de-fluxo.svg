@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1200" role="img" aria-labelledby="titulo descricao">
+  <title id="titulo">Controle de fluxo em Java — mapa mental de revisão</title>
+  <desc id="descricao">Infográfico horizontal em estilo de anotações feitas à mão, com oito blocos coloridos conectados ao tema central e conteúdo sobre condicionais, switch, laços, desvios e métodos.</desc>
+  <defs>
+    <pattern id="quadriculado" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#dce5ec" stroke-width="1"/>
+    </pattern>
+    <marker id="seta-azul" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M1 1L9 5.5L1 10" fill="none" stroke="#3678c7" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="seta-verde" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M1 1L9 5.5L1 10" fill="none" stroke="#328c68" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="seta-amarela" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M1 1L9 5.5L1 10" fill="none" stroke="#bd8d22" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="seta-vermelha" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M1 1L9 5.5L1 10" fill="none" stroke="#ca625c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="seta-laranja" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M1 1L9 5.5L1 10" fill="none" stroke="#d47a31" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="seta-roxa" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M1 1L9 5.5L1 10" fill="none" stroke="#805eaa" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .cabecalho { font: 800 28px 'Segoe Print','Comic Sans MS',cursive; fill: #222832; }
+      .texto { font: 17px 'Segoe UI',Arial,sans-serif; fill: #303844; }
+      .pequeno { font: 15.5px 'Segoe UI',Arial,sans-serif; fill: #303844; }
+      .codigo { font: 15px Consolas,'Courier New',monospace; fill: #303844; }
+      .rotulo { font: 700 11px 'Segoe UI',Arial,sans-serif; letter-spacing: 1.5px; fill: #627181; }
+      .seta { fill: none; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; opacity: .82; }
+      .box { fill: #fffefa; fill-opacity: .84; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1200" fill="#fffefa"/>
+  <rect width="1800" height="1200" fill="url(#quadriculado)" opacity=".68"/>
+  <text x="900" y="38" text-anchor="middle" class="rotulo">JAVA SE 17 · FOLHA DE REVISÃO</text>
+
+  <!-- Ramificações desenhadas à mão e coloridas. -->
+  <g aria-hidden="true">
+    <path class="seta" stroke="#3678c7" marker-end="url(#seta-azul)" d="M700 468C615 380 548 286 482 236"/>
+    <path class="seta" stroke="#328c68" marker-end="url(#seta-verde)" d="M808 425C788 338 791 260 812 211"/>
+    <path class="seta" stroke="#bd8d22" marker-end="url(#seta-amarela)" d="M1104 464C1191 374 1260 283 1332 235"/>
+    <path class="seta" stroke="#ca625c" marker-end="url(#seta-vermelha)" d="M660 560C576 555 520 550 451 548"/>
+    <path class="seta" stroke="#d47a31" marker-end="url(#seta-laranja)" d="M1140 557C1220 555 1274 561 1343 580"/>
+    <path class="seta" stroke="#805eaa" marker-end="url(#seta-roxa)" d="M708 653C622 735 551 811 487 868"/>
+    <path class="seta" stroke="#3678c7" marker-end="url(#seta-azul)" d="M1092 665C1180 750 1246 830 1313 886"/>
+    <path class="seta" stroke="#328c68" marker-end="url(#seta-verde)" d="M900 697C900 775 900 835 900 893"/>
+  </g>
+
+  <!-- Conceito -->
+  <g>
+    <path class="box" stroke="#3678c7" d="M53 75Q252 68 469 79Q480 84 478 105L475 360Q469 370 451 368L65 369Q50 365 51 349L54 98Q51 82 53 75Z"/>
+    <path d="M77 126Q240 119 403 127" fill="none" stroke="#78a8e0" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+    <text x="78" y="119" class="cabecalho" fill="#2866aa">Conceito</text>
+    <text x="79" y="163" class="texto">
+      <tspan x="79" dy="0">Controla como o código avança:</tspan>
+      <tspan x="79" dy="26">decidir, repetir e organizar chamadas.</tspan>
+    </text>
+    <text x="81" y="239" class="pequeno">
+      <tspan x="81" dy="0">→ Condicionais escolhem caminhos</tspan>
+      <tspan x="81" dy="28">→ Laços repetem instruções</tspan>
+      <tspan x="81" dy="28">→ Métodos declaram e recebem chamadas</tspan>
+    </text>
+    <text x="80" y="340" class="rotulo" fill="#2866aa">CONDIÇÃO · REPETIÇÃO · MÉTODO</text>
+  </g>
+
+  <!-- Elementos -->
+  <g>
+    <path class="box" stroke="#328c68" d="M626 71Q816 66 1010 76Q1023 82 1020 99L1019 343Q1014 355 997 354L642 356Q626 351 627 336L629 97Q625 81 626 71Z"/>
+    <path d="M651 121Q805 114 968 122" fill="none" stroke="#70bb96" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+    <text x="652" y="114" class="cabecalho" fill="#287451">Elementos</text>
+    <text x="655" y="155" class="pequeno">
+      <tspan x="655" dy="0"><tspan font-weight="700">Decisão</tspan> · if · else if · else · switch</tspan>
+      <tspan x="655" dy="26"><tspan font-weight="700">Laços</tspan> · while · do-while · for ·</tspan>
+      <tspan x="716" dy="22">enhanced for</tspan>
+      <tspan x="655" dy="27"><tspan font-weight="700">Desvios</tspan> · break · continue · rótulos</tspan>
+      <tspan x="655" dy="27"><tspan font-weight="700">Métodos</tspan> · assinatura · retorno ·</tspan>
+      <tspan x="716" dy="22">parâmetros · corpo · modificadores</tspan>
+      <tspan x="655" dy="27"><tspan font-weight="700">Varargs</tspan> · ...</tspan>
+    </text>
+  </g>
+
+  <!-- Funcionamento -->
+  <g>
+    <path class="box" stroke="#bd8d22" d="M1322 75Q1511 68 1738 79Q1750 86 1747 104L1746 389Q1740 402 1723 400L1336 401Q1320 396 1321 380L1324 99Q1320 84 1322 75Z"/>
+    <path d="M1348 126Q1514 119 1687 127" fill="none" stroke="#e6c45a" stroke-width="6" stroke-linecap="round" opacity=".62"/>
+    <text x="1349" y="119" class="cabecalho" fill="#987119">Funcionamento</text>
+    <text x="1352" y="158" class="pequeno">
+      <tspan x="1352" dy="0">• if: o else associa-se ao if mais próximo.</tspan>
+      <tspan x="1352" dy="25">• switch tradicional: case, default, break;</tspan>
+      <tspan x="1368" dy="22">pode ocorrer fall-through.</tspan>
+      <tspan x="1352" dy="26">• switch moderno: setas, blocos, yield;</tspan>
+      <tspan x="1368" dy="22">expressão pode produzir valor.</tspan>
+      <tspan x="1352" dy="26">• for: inicialização → condição → corpo →</tspan>
+      <tspan x="1368" dy="22">atualização.</tspan>
+      <tspan x="1352" dy="26">• Varargs é array, último parâmetro;</tspan>
+      <tspan x="1368" dy="22">aceita zero ou mais argumentos.</tspan>
+    </text>
+  </g>
+
+  <!-- Exemplo -->
+  <g>
+    <path class="box" stroke="#ca625c" d="M47 430Q222 422 443 433Q456 440 453 457L451 670Q447 682 430 681L62 682Q47 677 48 662L50 454Q46 439 47 430Z"/>
+    <path d="M73 477Q230 470 389 478" fill="none" stroke="#e4958e" stroke-width="6" stroke-linecap="round" opacity=".58"/>
+    <text x="75" y="470" class="cabecalho" fill="#ad4e49">Exemplo</text>
+    <text x="78" y="512" class="codigo">
+      <tspan x="78" dy="0">if (condicao) { ... }</tspan>
+      <tspan x="78" dy="28">else { ... }</tspan>
+      <tspan x="78" dy="38">for (inicial; condicao;</tspan>
+      <tspan x="98" dy="23">atualizacao) { ... }</tspan>
+      <tspan x="78" dy="38">switch (valor) {</tspan>
+      <tspan x="98" dy="23">case ... -&gt; resultado</tspan>
+      <tspan x="78" dy="27">}</tspan>
+    </text>
+  </g>
+
+  <!-- Aplicações -->
+  <g>
+    <path class="box" stroke="#d47a31" d="M1340 431Q1524 423 1738 434Q1750 440 1747 458L1745 692Q1739 704 1722 702L1352 703Q1338 698 1339 683L1341 455Q1337 440 1340 431Z"/>
+    <path d="M1367 477Q1525 470 1688 478" fill="none" stroke="#edaa6a" stroke-width="6" stroke-linecap="round" opacity=".6"/>
+    <text x="1369" y="470" class="cabecalho" fill="#b66724">Aplicações</text>
+    <text x="1373" y="514" class="pequeno">
+      <tspan x="1373" dy="0">• Escolher caminhos com condições</tspan>
+      <tspan x="1373" dy="27">• Selecionar valores com switch</tspan>
+      <tspan x="1373" dy="27">• Repetir sobre arrays ou Iterable</tspan>
+      <tspan x="1373" dy="27">• Interromper ou avançar laços</tspan>
+      <tspan x="1373" dy="27">• Chamar método com argumentos</tspan>
+      <tspan x="1373" dy="27">• Aceitar quantidade variável via varargs</tspan>
+    </text>
+  </g>
+
+  <!-- Cuidados -->
+  <g>
+    <path class="box" stroke="#805eaa" d="M52 767Q236 758 469 770Q482 777 479 795L477 1078Q471 1091 454 1089L66 1090Q51 1085 52 1069L55 792Q51 776 52 767Z"/>
+    <path d="M79 813Q244 806 409 814" fill="none" stroke="#ad92d0" stroke-width="6" stroke-linecap="round" opacity=".58"/>
+    <text x="81" y="806" class="cabecalho" fill="#704b9b">Cuidados</text>
+    <text x="84" y="847" class="pequeno">
+      <tspan x="84" dy="0">• Laço pode ser infinito ou não executar.</tspan>
+      <tspan x="84" dy="27">• Enhanced for não dá acesso direto ao índice.</tspan>
+      <tspan x="84" dy="27">• break / continue rotulados: observe</tspan>
+      <tspan x="102" dy="22">o escopo em laços aninhados.</tspan>
+      <tspan x="84" dy="27">• Expressão switch: verifique caminhos,</tspan>
+      <tspan x="102" dy="22">default e yield quando necessário.</tspan>
+      <tspan x="84" dy="27">• Recursão pode causar StackOverflowError.</tspan>
+      <tspan x="84" dy="27">• Argumentos são passados por valor,</tspan>
+      <tspan x="102" dy="22">inclusive referências a objetos.</tspan>
+    </text>
+  </g>
+
+  <!-- Resolução e chamadas -->
+  <g>
+    <path class="box" stroke="#3678c7" d="M1310 763Q1503 755 1739 767Q1751 773 1748 791L1746 1079Q1740 1091 1723 1089L1324 1090Q1308 1085 1309 1069L1312 790Q1308 774 1310 763Z"/>
+    <path d="M1337 809Q1505 802 1695 810" fill="none" stroke="#78a8e0" stroke-width="6" stroke-linecap="round" opacity=".58"/>
+    <text x="1339" y="802" class="cabecalho" fill="#2866aa">Métodos &amp; resolução</text>
+    <text x="1343" y="843" class="pequeno">
+      <tspan x="1343" dy="0">• Sobrecarga: número, tipos, ordem e</tspan>
+      <tspan x="1361" dy="22">conversões dos argumentos.</tspan>
+      <tspan x="1343" dy="27">• Considere widening, boxing, varargs e</tspan>
+      <tspan x="1361" dy="22">mais de um candidato.</tspan>
+      <tspan x="1343" dy="27">• Estático ou de instância: chamada e</tspan>
+      <tspan x="1361" dy="22">acesso a membros.</tspan>
+      <tspan x="1343" dy="27">• Retorno, void e caminhos de execução.</tspan>
+      <tspan x="1343" dy="27">• Distinguir alterar o objeto de reatribuir</tspan>
+      <tspan x="1361" dy="22">a variável local do parâmetro.</tspan>
+    </text>
+  </g>
+
+  <!-- Resumo -->
+  <g>
+    <path class="box" stroke="#328c68" d="M601 881Q791 873 1009 884Q1021 890 1018 908L1017 1082Q1011 1094 994 1092L617 1093Q601 1088 602 1072L604 906Q600 892 601 881Z"/>
+    <path d="M629 927Q808 920 973 928" fill="none" stroke="#70bb96" stroke-width="6" stroke-linecap="round" opacity=".58"/>
+    <text x="631" y="920" class="cabecalho" fill="#287451">Resumo</text>
+    <text x="636" y="960" class="pequeno">
+      <tspan x="636" dy="0"><tspan font-weight="700">if / switch</tspan> · decisão</tspan>
+      <tspan x="636" dy="27"><tspan font-weight="700">while / do-while / for</tspan> · repetição</tspan>
+      <tspan x="636" dy="27"><tspan font-weight="700">break / continue</tspan> · desvio</tspan>
+      <tspan x="636" dy="27"><tspan font-weight="700">método</tspan> · assinatura, argumentos, retorno</tspan>
+    </text>
+    <text x="636" y="1075" class="rotulo" fill="#287451">TRACE · COMPARE · PREVEJA A EXECUÇÃO</text>
+  </g>
+
+  <!-- Tema central em destaque manuscrito. -->
+  <path d="M696 469C727 438 773 453 805 429C837 405 866 426 896 408C927 390 966 422 1000 419C1035 416 1075 444 1097 473C1118 503 1104 538 1120 568C1138 602 1104 646 1071 662C1038 678 1005 660 972 681C939 701 900 677 869 691C835 706 801 677 765 676C727 675 696 645 685 612C673 579 690 547 675 518C660 492 674 480 696 469Z" fill="#c4edf2" stroke="#8fd6e0" stroke-width="2"/>
+  <path d="M704 477Q762 452 819 449M729 650Q793 677 866 669M987 434Q1050 448 1084 489" fill="none" stroke="#83d2dc" stroke-width="12" stroke-linecap="round" opacity=".35"/>
+  <text x="900" y="488" text-anchor="middle" class="rotulo">TEMA CENTRAL</text>
+  <text x="900" y="538" text-anchor="middle" font-family="'Segoe Print','Comic Sans MS',cursive" font-size="36" font-weight="900" fill="#20242a">CONTROLE</text>
+  <text x="900" y="581" text-anchor="middle" font-family="'Segoe Print','Comic Sans MS',cursive" font-size="36" font-weight="900" fill="#20242a">DE FLUXO</text>
+  <path d="M776 603Q900 615 1025 603M790 611Q901 621 1012 610" fill="none" stroke="#242831" stroke-width="4.5" stroke-linecap="round"/>
+  <text x="900" y="646" text-anchor="middle" class="texto">Java SE 17</text>
+
+  <text x="900" y="1170" text-anchor="middle" class="rotulo">LEIA O FLUXO · TRACE OS CAMINHOS · REVISE OS CASOS-LIMITE</text>
+</svg>

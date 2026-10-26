@@ -2,6 +2,10 @@
 
 Aprenda a interpretar a hierarquia de exceções e a controlar falhas sem perder recursos nem ocultar exceções relevantes.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./04-excecoes.svg) — hierarquia, fluxo de tratamento e fechamento de recursos.
+
 ## Assuntos
 
 - [Hierarquia e tipos de exceção](./hierarquia-e-tipos-de-excecao.md)

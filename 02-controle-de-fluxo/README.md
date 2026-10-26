@@ -2,6 +2,10 @@
 
 Este domínio trata da execução condicional e repetitiva do código, além da declaração e chamada de métodos.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./02-controle-de-fluxo.svg) — resumo visual de condicionais, `switch`, laços, desvios e métodos.
+
 ## Assuntos
 
 - [Estruturas condicionais e `switch`](./condicionais-e-switch.md)

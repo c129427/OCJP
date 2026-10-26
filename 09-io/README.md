@@ -2,6 +2,10 @@
 
 Estude as APIs clássicas de entrada/saída, as abstrações de arquivos do NIO.2 e a persistência de objetos.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./09-io.svg) — streams de bytes e caracteres, NIO.2 e serialização.
+
 ## Assuntos
 
 - [Streams, readers e writers](./streams-readers-e-writers.md)

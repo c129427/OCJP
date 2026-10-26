@@ -2,6 +2,10 @@
 
 Estude a definição de tipos, criação e ciclo de vida de objetos, encapsulamento e relações entre classes, interfaces e subclasses.
 
+## Mapa mental de revisão
+
+[Abrir o infográfico horizontal](./03-poo.svg) — resumo visual de classes, objetos, inicialização, herança e tipos relacionados.
+
 ## Assuntos
 
 - [Classes, objetos e encapsulamento](./classes-objetos-e-encapsulamento.md)

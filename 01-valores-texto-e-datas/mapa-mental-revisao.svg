@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" role="img" aria-labelledby="titulo descricao">
+  <title id="titulo">Mapa mental: valores, texto e datas em Java</title>
+  <desc id="descricao">Mapa mental horizontal em estilo de anotações à mão, com papel quadriculado, tema central azul-claro e oito ramificações sobre os fundamentos de valores, texto e datas em Java.</desc>
+  <defs>
+    <pattern id="quadriculado" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#dce5ec" stroke-width="1"/>
+    </pattern>
+    <filter id="papel" x="-8%" y="-12%" width="116%" height="124%">
+      <feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="8" result="ruido"/>
+      <feDisplacementMap in="SourceGraphic" in2="ruido" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <marker id="ponta" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M1 1L10 6L1 11" fill="none" stroke="#22252b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <style>
+      .ink { fill: #20242a; }
+      .cabecalho { font: 800 30px 'Segoe Print', 'Comic Sans MS', cursive; fill: #20242a; letter-spacing: .1px; }
+      .texto { font: 20px 'Segoe UI', Arial, sans-serif; fill: #303844; }
+      .pequeno { font: 18px 'Segoe UI', Arial, sans-serif; fill: #303844; }
+      .codigo { font: 17px Consolas, 'Courier New', monospace; fill: #303844; }
+      .marca { font: 700 12px 'Segoe UI', Arial, sans-serif; letter-spacing: 1.4px; fill: #617080; }
+      .seta { fill: none; stroke: #22252b; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .sublinhar { fill: none; stroke-linecap: round; stroke-width: 7; opacity: .55; }
+    </style>
+  </defs>
+
+  <rect width="1800" height="1100" fill="#fffefa"/>
+  <rect width="1800" height="1100" fill="url(#quadriculado)" opacity=".72"/>
+
+  <text x="900" y="42" text-anchor="middle" class="marca">JAVA SE 17 · FOLHA DE REVISÃO</text>
+
+  <!-- Setas orgânicas ligam as anotações ao conceito central. -->
+  <g aria-hidden="true">
+    <path class="seta" marker-end="url(#ponta)" d="M690 452C580 385 514 310 438 260"/>
+    <path class="seta" marker-end="url(#ponta)" d="M792 409C758 342 755 258 786 207"/>
+    <path class="seta" marker-end="url(#ponta)" d="M1102 450C1214 372 1268 294 1330 254"/>
+    <path class="seta" marker-end="url(#ponta)" d="M664 532C566 530 494 533 420 530"/>
+    <path class="seta" marker-end="url(#ponta)" d="M1128 535C1218 538 1272 546 1350 563"/>
+    <path class="seta" marker-end="url(#ponta)" d="M704 628C610 699 538 766 473 817"/>
+    <path class="seta" marker-end="url(#ponta)" d="M1048 655C1117 719 1171 766 1235 803"/>
+    <path class="seta" marker-end="url(#ponta)" d="M900 681C901 743 897 795 886 840"/>
+  </g>
+
+  <!-- Conceito -->
+  <g>
+    <path class="sublinhar" stroke="#69cbd0" d="M54 96Q228 89 444 100"/>
+    <text x="60" y="91" class="cabecalho">Conceito</text>
+    <text x="67" y="136" class="texto">
+      <tspan x="67" dy="0">Quatro fundamentos para entender</tspan>
+      <tspan x="67" dy="28">e prever valores em Java:</tspan>
+    </text>
+    <text x="76" y="222" class="pequeno">
+      <tspan x="76" dy="0">• Tipos primitivos e wrappers</tspan>
+      <tspan x="76" dy="27">• Operadores e conversões</tspan>
+      <tspan x="76" dy="27">• String e StringBuilder</tspan>
+      <tspan x="76" dy="27">• Data e hora com java.time</tspan>
+    </text>
+  </g>
+
+  <!-- Elementos -->
+  <g>
+    <path class="sublinhar" stroke="#e9c65d" d="M599 105Q802 96 1004 107"/>
+    <text x="606" y="97" class="cabecalho">Elementos</text>
+    <text x="613" y="140" class="pequeno">
+      <tspan x="613" dy="0"><tspan font-weight="700">Primitivos</tspan> · boolean, byte, short, char,</tspan>
+      <tspan x="613" dy="25">int, long, float, double</tspan>
+      <tspan x="613" dy="30"><tspan font-weight="700">Wrappers</tspan> · Boolean, Byte, Short, Character,</tspan>
+      <tspan x="613" dy="25">Integer, Long, Float, Double</tspan>
+      <tspan x="613" dy="30"><tspan font-weight="700">Tempo</tspan> · LocalDate, LocalTime,</tspan>
+      <tspan x="613" dy="25">LocalDateTime, ZonedDateTime, Instant</tspan>
+    </text>
+  </g>
+
+  <!-- Aplicações -->
+  <g>
+    <path class="sublinhar" stroke="#c0aadf" d="M1318 102Q1512 95 1735 106"/>
+    <text x="1325" y="94" class="cabecalho">Aplicações</text>
+    <text x="1332" y="138" class="pequeno">
+      <tspan x="1332" dy="0">Escolha o tipo temporal pelo uso:</tspan>
+      <tspan x="1344" dy="25">• data civil · horário local</tspan>
+      <tspan x="1344" dy="25">• instante global · data com fuso</tspan>
+      <tspan x="1332" dy="31"><tspan font-weight="700">Period</tspan>: anos, meses e dias</tspan>
+      <tspan x="1332" dy="25"><tspan font-weight="700">Duration</tspan>: segundos e unidades menores</tspan>
+      <tspan x="1332" dy="31">DateTimeFormatter: parsing e formatação</tspan>
+    </text>
+  </g>
+
+  <!-- Funcionamento -->
+  <g>
+    <path class="sublinhar" stroke="#83c5a0" d="M50 410Q248 400 438 412"/>
+    <text x="56" y="402" class="cabecalho">Funcionamento</text>
+    <text x="65" y="451" class="pequeno">
+      <tspan x="65" dy="0">• Precedência e associatividade definem a ordem.</tspan>
+      <tspan x="65" dy="28">• byte, short e char promovem-se a int em muitas expressões.</tspan>
+      <tspan x="65" dy="28">• Boxing / unboxing: conversão entre primitivo e wrapper.</tspan>
+      <tspan x="65" dy="28">• String e java.time são imutáveis; StringBuilder é mutável.</tspan>
+      <tspan x="65" dy="28">• &amp;&amp; / || têm curto-circuito; &amp; / | também avaliam booleanos</tspan>
+      <tspan x="83" dy="25">sem curto-circuito.</tspan>
+    </text>
+  </g>
+
+  <!-- Exemplo -->
+  <g>
+    <path class="sublinhar" stroke="#f2ad83" d="M1370 433Q1534 424 1737 436"/>
+    <text x="1377" y="425" class="cabecalho">Exemplo</text>
+    <text x="1383" y="475" class="codigo">
+      <tspan x="1383" dy="0">5 / 2</tspan><tspan font-family="'Segoe UI',Arial,sans-serif">  → divisão inteira</tspan>
+      <tspan x="1383" dy="31">5.0 / 2</tspan><tspan font-family="'Segoe UI',Arial,sans-serif"> → ponto flutuante</tspan>
+      <tspan x="1383" dy="39">"Java".equals(texto)</tspan>
+      <tspan x="1383" dy="24" font-family="'Segoe UI',Arial,sans-serif">compara conteúdo</tspan>
+      <tspan x="1383" dy="38">sb.append("Java")</tspan>
+      <tspan x="1383" dy="34">data.plusDays(1)</tspan>
+    </text>
+  </g>
+
+  <!-- Vantagens -->
+  <g>
+    <path class="sublinhar" stroke="#83c5a0" d="M57 749Q238 740 451 752"/>
+    <text x="64" y="741" class="cabecalho">Vantagens</text>
+    <text x="73" y="789" class="pequeno">
+      <tspan x="73" dy="0"><tspan font-weight="700">Imutabilidade</tspan> preserva o original;</tspan>
+      <tspan x="73" dy="25">operações devolvem outro valor.</tspan>
+      <tspan x="73" dy="34"><tspan font-weight="700">java.time</tspan> distingue data, hora,</tspan>
+      <tspan x="73" dy="25">instante e fuso.</tspan>
+      <tspan x="73" dy="34"><tspan font-weight="700">StringBuilder</tspan> permite alterar o texto.</tspan>
+    </text>
+  </g>
+
+  <!-- Cuidados -->
+  <g>
+    <path class="sublinhar" stroke="#ea9990" d="M1282 714Q1477 705 1738 717"/>
+    <text x="1289" y="706" class="cabecalho">Cuidados</text>
+    <text x="1297" y="752" class="pequeno">
+      <tspan x="1297" dy="0">• Local precisa ser inicializada; campos e</tspan>
+      <tspan x="1315" dy="24">arrays recebem valores padrão.</tspan>
+      <tspan x="1297" dy="30">• Unboxing de null pode lançar exceção.</tspan>
+      <tspan x="1297" dy="30">• String: == identidade; equals, conteúdo.</tspan>
+      <tspan x="1297" dy="30">• Cast pode perder precisão ou causar overflow.</tspan>
+      <tspan x="1297" dy="30">• Índices inválidos podem lançar</tspan>
+      <tspan x="1315" dy="24">StringIndexOutOfBoundsException.</tspan>
+      <tspan x="1297" dy="30">• Guarde retornos imutáveis; confira fusos.</tspan>
+    </text>
+  </g>
+
+  <!-- Resumo -->
+  <g>
+    <path class="sublinhar" stroke="#69cbd0" d="M673 913Q864 904 1074 916"/>
+    <text x="680" y="905" class="cabecalho">Resumo</text>
+    <text x="686" y="951" class="pequeno">
+      <tspan x="686" dy="0"><tspan font-weight="700">Primitivo ↔ wrapper</tspan> · valor ↔ objeto</tspan>
+      <tspan x="686" dy="27"><tspan font-weight="700">String ↔ StringBuilder</tspan> · imutável ↔ mutável</tspan>
+      <tspan x="686" dy="27"><tspan font-weight="700">== ↔ equals</tspan> · identidade ↔ conteúdo</tspan>
+      <tspan x="686" dy="27"><tspan font-weight="700">Period ↔ Duration</tspan> · calendário ↔ tempo decorrido</tspan>
+    </text>
+    <text x="686" y="1080" class="marca">PREVEJA · EXPLIQUE · PRATIQUE</text>
+  </g>
+
+  <!-- Tema central: papel pintado à mão sobre destaque azul. -->
+  <g filter="url(#papel)">
+    <path d="M690 465C716 438 774 446 800 424C824 402 869 423 895 408C933 388 969 425 1000 422C1042 419 1073 445 1094 475C1115 505 1106 545 1117 573C1128 611 1096 642 1062 659C1030 676 994 660 961 680C930 699 894 676 863 687C827 700 794 673 762 672C722 671 697 641 686 609C674 576 688 542 676 514C663 489 672 479 690 465Z" fill="#bcebf0"/>
+    <path d="M700 472C759 450 789 464 819 441M726 650C788 674 833 656 871 676M977 438C1028 450 1080 470 1094 508" fill="none" stroke="#8ddce4" stroke-width="13" stroke-linecap="round" opacity=".42"/>
+  </g>
+  <text x="900" y="488" text-anchor="middle" class="marca" fill="#59727c">O QUE REVISAR</text>
+  <text x="900" y="544" text-anchor="middle" font-family="'Segoe Print','Comic Sans MS',cursive" font-size="39" font-weight="900" fill="#20242a">VALORES, TEXTO</text>
+  <text x="900" y="592" text-anchor="middle" font-family="'Segoe Print','Comic Sans MS',cursive" font-size="39" font-weight="900" fill="#20242a">E DATAS</text>
+  <path d="M738 616Q900 631 1062 613M754 625Q901 638 1044 623" fill="none" stroke="#20242a" stroke-width="5" stroke-linecap="round"/>
+  <text x="900" y="657" text-anchor="middle" class="pequeno">Java SE 17</text>
+</svg>
