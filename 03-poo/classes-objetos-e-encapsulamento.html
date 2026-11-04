@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="../site.css">
+  <title>Classes, objetos e encapsulamento | Guia de estudos OCJP</title>
+  <meta name="description" content="Desenhe a sequência de inicialização de um objeto e identifique o estado observado por cada método chamado.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="../index.html">Índice</a>
+        <a href="../resumo.html">Resumo</a>
+        <a href="../trilha-iniciante.html">Começar</a>
+        <a href="../quiz.html">Quiz</a>
+        <a href="../exames.html">Comparar exames</a>
+        <a href="../glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="../exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="../exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="../exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Capítulo 03 · Programação orientada a objetos</p>
+          <h1>Classes, objetos e encapsulamento</h1>
+          <p class="hero-description">Desenhe a sequência de inicialização de um objeto e identifique o estado observado por cada método chamado.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">Fundamento essencial</li><li class="badge">Base: Java 17</li><li class="badge">1Z0-829</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<a class="map-link" href="classes-objetos-e-encapsulamento.svg">
+          <img src="classes-objetos-e-encapsulamento.svg" alt="Miniatura do mapa mental: Classes, objetos e encapsulamento">
+          <span>Ver mapa mental deste assunto</span>
+        </a>
+<section class="learning-guide">
+        <div class="learning-objective"><span>OBJETIVO DE APRENDIZAGEM</span><p>Entender referências, estado, escopo e limites de acesso de objetos e membros.</p></div>
+        <p class="study-mode"><strong>Primeiro contato:</strong> aprenda o conceito e pratique antes de consultar os detalhes de prova. <a href="../trilha-iniciante.html#fundamentos">Voltar aos fundamentos</a> se algum termo ainda for novo.</p>
+
+        <p class="study-meta"><strong>Ritmo sugerido:</strong> 20–30 minutos · leia, execute o exemplo e tente a atividade antes de consultar referências.</p>
+        <p class="study-meta"><strong>Etapa anterior sugerida:</strong> <a href="../02-controle-de-fluxo/metodos-sobrecarga-e-varargs.html">Métodos, sobrecarga e varargs</a><br><strong>Próximo recomendado:</strong> <a href="construtores-e-inicializacao.html">Construtores e inicialização</a></p>
+        <ol class="lesson-routine" aria-label="Roteiro da microaula">
+          <li>Leia o objetivo e localize a ideia principal no conteúdo abaixo.</li>
+          <li>Preveja o resultado, compile e execute o exemplo.</li>
+          <li>Faça a atividade sem copiar a solução e confira a checagem comentada.</li>
+        </ol>
+        <section class="example-panel">
+          <div class="example-heading"><div><p class="eyebrow-dark">EXEMPLO DE CONSOLE</p><h2>Veja a regra em execução</h2></div><a class="button-link" href="../src/03-poo/classes-objetos-e-encapsulamento/ClassesObjetosEEncapsulamentoExample.java" target="_blank" rel="noopener noreferrer">Abrir arquivo Java ↗</a></div>
+          <p>Antes de executar, anote sua previsão. Compile o exemplo com o JDK e compare a saída observada com as regras deste assunto.</p>
+          <details class="run-command"><summary>Comandos para compilar e executar</summary><pre><code>javac -d target/bin src/03-poo/classes-objetos-e-encapsulamento/ClassesObjetosEEncapsulamentoExample.java
+java -cp target/bin ClassesObjetosEEncapsulamentoExample</code></pre><p>A execução imprime o resultado no console para você comparar com sua previsão.</p></details>
+          <details class="source-code"><summary>Consultar código-fonte: ClassesObjetosEEncapsulamentoExample.java</summary><pre><code class="language-java">public class ClassesObjetosEEncapsulamentoExample {
+    private static class Conta {
+        private double saldo;
+
+        public void depositar(double valor) {
+            if (valor &gt; 0) {
+                saldo += valor;
+            } else {
+                System.out.println(&quot;Deposito recusado: o valor precisa ser positivo.&quot;);
+            }
+        }
+
+        public double consultarSaldo() {
+            return saldo;
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(&quot;=== Classes, objetos e encapsulamento ===&quot;);
+        System.out.println(&quot;Cada Conta tem seu proprio estado; saldo so muda pelo metodo depositar().&quot;);
+        Conta contaPrincipal = new Conta();
+        Conta contaReserva = new Conta();
+        contaPrincipal.depositar(50.0);
+        contaPrincipal.depositar(-10.0);
+        contaReserva.depositar(20.0);
+
+        System.out.println(&quot;Saldo da conta principal: &quot; + contaPrincipal.consultarSaldo());
+        System.out.println(&quot;Saldo independente da conta reserva: &quot; + contaReserva.consultarSaldo());
+    }
+}
+</code></pre></details>
+        </section>
+        <section class="practice-task">
+          <p class="eyebrow-dark">PRATIQUE AGORA</p>
+          <h2>Faça uma pequena alteração por conta própria</h2>
+          <p>Crie uma classe <code>Tarefa</code> com descrição e estado concluído privados; instancie uma tarefa e imprima seus dados por métodos públicos.</p>
+          <p class="task-check">Concluído quando: o programa compilar, produzir o resultado esperado e você conseguir explicar a regra aplicada.</p>
+        </section>
+        <section class="quick-check">
+          <p class="eyebrow-dark">CHECAGEM RÁPIDA · Classes, objetos e encapsulamento</p>
+          <h2>Se <code>b = a</code>, a atribuição copia o objeto ou a referência?</h2>
+          <details class="answer-key"><summary>Conferir resposta comentada</summary><p>Copia a referência: <code>a</code> e <code>b</code> passam a apontar para o mesmo objeto; mudanças no estado observável por uma delas aparecem pela outra.</p></details>
+        </section>
+        <p class="glossary-link"><a href="../glossario.html">Consulte o glossário de termos Java ↗</a></p>
+      </section>
+<h2>Estude</h2>
+<ul><li>Declaração de classes, campos, métodos e blocos de inicialização.</li><li>Membros estáticos e de instância, inicialização e acesso por tipo ou objeto.</li><li>Referências, criação de objetos com <code>new</code>, aliases e valor <code>null</code>.</li><li>Encapsulamento, modificadores <code>public</code>, <code>protected</code>, package-private e <code>private</code>.</li><li>Pacotes, imports e nomes qualificados; membros e tipos de topo.</li><li>Imutabilidade: estado privado, inicialização controlada e ausência de operações mutadoras.</li><li>Ciclo de vida de objetos, elegibilidade para garbage collection e referências alcançáveis.</li><li><code>this</code> para referir-se ao objeto atual e para resolver sombreamento de nomes.</li></ul>
+<h2>Prática</h2>
+<p>Desenhe a sequência de inicialização de um objeto e identifique o estado observado por cada método chamado.</p>
+<section class="chapter-exam-fit">
+        <h2>Como este capítulo se relaciona com cada exame</h2>
+        <div class="exam-fit-grid"><div class="exam-fit"><span class="exam-version">1Z0-808 · Java 8</span><p>POO básica é reaproveitável; records e sealed não existem em Java 8.</p></div><div class="exam-fit"><span class="exam-version">1Z0-829 · Java 17</span><p>Base de estudo deste portal; confirme o mapeamento com o blueprint vigente.</p></div><div class="exam-fit"><span class="exam-version">1Z0-830 · Java 21</span><p>Conceitos úteis; revise recursos de linguagem e regras de Java 21.</p></div></div>
+        <p class="matrix-note">Orientação editorial sobre reaproveitamento do material; não representa objetivos oficiais nem garante cobertura do exame. Consulte o <a href="../exames.html">comparativo e as fontes da Oracle</a>.</p>
+      </section>
+<section class="related-topics"><h2>Conecte com outros assuntos</h2><div class="related-grid"><a class="related-link" href="construtores-e-inicializacao.html">Construtores e inicialização <span aria-hidden="true">→</span></a><a class="related-link" href="heranca-sobrescrita-e-polimorfismo.html">Herança, sobrescrita e polimorfismo <span aria-hidden="true">→</span></a></div></section>
+<nav class="chapter-nav" aria-label="Navegação entre assuntos">
+          <a href="index.html">← Capítulo</a>
+          <a href='construtores-e-inicializacao.html'>Próximo assunto →</a>
+        </nav>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>

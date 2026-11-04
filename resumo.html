@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="site.css">
+  <title>Resumo geral | Guia de estudos OCJP</title>
+  <meta name="description" content="Visão geral dos domínios e do percurso de estudos Java SE 17 Developer.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="index.html">Índice</a>
+        <a href="resumo.html">Resumo</a>
+        <a href="trilha-iniciante.html">Começar</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="exames.html">Comparar exames</a>
+        <a href="glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Resumo geral · OCJP</p>
+          <h1>Visão geral do curso</h1>
+          <p class="hero-description">Uma visão integrada dos temas do exame e uma sugestão de percurso para orientar o estudo e a revisão.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">11 domínios</li><li class="badge">Java SE 17</li><li class="badge">Exame 1Z0-829</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<p>Este roteiro tem como base a <strong>1Z0-829</strong>, para Java SE 17 Developer. A comparação com a <strong>1Z0-808</strong> (Java 8 Programmer I) e a <strong>1Z0-830</strong> (Java SE 21 Developer Professional) ajuda a separar fundamentos, nível profissional e diferenças entre versões do Java.</p>
+        <section class="exam-callout"><div><strong>Os códigos não representam apenas versões sucessivas da mesma prova.</strong><span>A 1Z0-808 tem perfil de fundamentos; 1Z0-829 e 1Z0-830 são exames de desenvolvedor profissional para versões distintas do Java.</span></div><a href="exames.html">Abrir comparação detalhada →</a></section>
+        <h2>Visão geral do percurso</h2>
+        <div class="table-wrap"><table><thead><tr><th>Capítulo</th><th>Escopo</th><th>Assuntos</th></tr></thead><tbody><tr><td><a href="01-valores-texto-e-datas/index.html">01. Valores, texto e datas</a></td><td>Estude como o Java representa dados e avalia expressões, como manipular texto e arrays, e como trabalhar com datas, horários e fusos. Esses fundamentos também aparecem dentro de questões de outros domínios.</td><td>4</td></tr><tr><td><a href="02-controle-de-fluxo/index.html">02. Controle de fluxo</a></td><td>Este domínio trata da execução condicional e repetitiva do código, além da declaração e chamada de métodos.</td><td>3</td></tr><tr><td><a href="03-poo/index.html">03. Programação orientada a objetos</a></td><td>Estude a definição de tipos, criação e ciclo de vida de objetos, encapsulamento e relações entre classes, interfaces e subclasses.</td><td>5</td></tr><tr><td><a href="04-excecoes/index.html">04. Tratamento de exceções</a></td><td>Aprenda a interpretar a hierarquia de exceções e a controlar falhas sem perder recursos nem ocultar exceções relevantes.</td><td>3</td></tr><tr><td><a href="05-arrays-e-colecoes/index.html">05. Arrays e coleções</a></td><td>Estude estruturas indexadas e o Collections Framework, incluindo parametrização com generics, comparações e ordenação.</td><td>4</td></tr><tr><td><a href="06-streams-e-lambdas/index.html">06. Streams e expressões lambda</a></td><td>Estude a programação funcional da biblioteca padrão: funções representadas por interfaces, pipelines de streams e operações de redução e coleta.</td><td>3</td></tr><tr><td><a href="07-modulos-java/index.html">07. Java Platform Module System</a></td><td>O domínio cobre a modularização introduzida na plataforma Java: declarar módulos, controlar dependências e exposição de pacotes, e compreender os diferentes tipos de módulos.</td><td>1</td></tr><tr><td><a href="08-concorrencia/index.html">08. Concorrência</a></td><td>Estude a criação e coordenação de tarefas simultâneas, a visibilidade de memória e os mecanismos da biblioteca `java.util.concurrent`.</td><td>3</td></tr><tr><td><a href="09-io/index.html">09. Entrada e saída (I/O)</a></td><td>Estude as APIs clássicas de entrada/saída, as abstrações de arquivos do NIO.2 e a persistência de objetos.</td><td>3</td></tr><tr><td><a href="10-jdbc/index.html">10. JDBC</a></td><td>Estude o acesso a bancos relacionais por meio de conexões, comandos parametrizados, resultados e transações.</td><td>2</td></tr><tr><td><a href="11-localizacao/index.html">11. Localização</a></td><td>Estude como adaptar recursos, números, moedas e datas a diferentes idiomas e regiões sem codificar formatos locais manualmente.</td><td>2</td></tr></tbody></table></div>
+        <h2>Como usar o material</h2>
+        <ol>
+          <li>Se está começando, siga a <a href="trilha-iniciante.html">trilha progressiva</a> e use o glossário quando encontrar termos novos.</li>
+          <li>Leia o objetivo e o exemplo do assunto, preveja o resultado, execute o programa e resolva a atividade prática.</li>
+          <li>Pratique a recuperação ativa com o <a href="quiz.html">quiz dinâmico de 12 perguntas</a>; cada rodada sorteia temas sem repetição.</li>
+          <li>Use os mapas mentais para revisar relações entre conceitos e consulte os exemplos de código disponíveis no repositório.</li>
+          <li>Use os tópicos “Estude” e “Verifique se consegue” para aprofundar e revisar casos-limite para a prova.</li>
+        </ol>
+        <p><a href="glossario.html">Abrir glossário Java</a></p>
+        <h2>Sobre o conteúdo</h2>
+        <p>O material foi organizado como apoio independente de estudo. Ele não é conteúdo oficial da Oracle e não substitui a documentação da plataforma ou a página do exame.</p>
+        <p><a href="exames.html">Comparação dos exames 1Z0-808, 1Z0-829 e 1Z0-830</a></p>
+        <p><a href="https://education.oracle.com/java-se-17-developer/pexam_1Z0-829">Oracle: Java SE 17 Developer (1Z0-829)</a> · <a href="https://docs.oracle.com/en/java/javase/17/">Documentação Java 17</a></p>
+        <p><a href="index.html">← Voltar ao índice</a></p>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>

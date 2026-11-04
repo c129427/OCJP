@@ -4,6 +4,10 @@ Este repositório organiza os estudos para a certificação **Oracle Certified P
 
 > O conteúdo é um roteiro de estudos independente, não material oficial da Oracle. Confirme os objetivos e as condições atuais do exame na [página oficial do exame 1Z0-829](https://education.oracle.com/java-se-17-developer/pexam_1Z0-829).
 
+O portal estático de estudos começa em [`index.html`](index.html); o [resumo geral](resumo.html) oferece uma visão rápida do percurso. Para quem está começando, a [trilha inicial](trilha-iniciante.html) começa pelos fundamentos de variáveis, entrada/saída, compilação e execução; depois apresenta uma sequência progressiva, erros frequentes e um projeto incremental com checkpoints compiláveis. A trilha permite marcar o progresso, salvo localmente neste navegador. O [glossário Java](glossario.html) explica termos recorrentes. O [quiz dinâmico](quiz.html) oferece rodadas adaptativas de 12 questões, sem repetir temas na mesma rodada, e indica quais assuntos revisar. Cada capítulo também tem um marco prático de conclusão. As páginas usam o CSS compartilhado `site.css` e podem ser abertas diretamente no navegador.
+
+O [comparativo entre os exames 1Z0-808, 1Z0-829 e 1Z0-830](exames.html) destaca as diferenças de versão Java, nível e foco de estudo, com uma matriz editorial de reaproveitamento por capítulo. As páginas de assunto incluem objetivo de aprendizagem, roteiro curto, atividade prática, checagem com resposta comentada, exemplo Java com comandos de execução e links para conceitos relacionados. O banco do quiz fica em `tools/quiz_questions.py` e `tools/quiz_questions_extra.py`, com questões variadas nos níveis fácil, médio e difícil para cada assunto. O resultado de uma rodada é apenas uma amostra de estudo, não uma medida definitiva de domínio. A ordem do índice de certificação segue os links de assuntos de cada README; a trilha para iniciantes reordena os fundamentos por pré-requisito. Para regenerar todas as páginas, execute `python tools\build_static_site.py`.
+
 ## Roteiro por domínio
 
 | Domínio do exame | Conteúdos |
@@ -22,11 +26,10 @@ Este repositório organiza os estudos para a certificação **Oracle Certified P
 
 ## Como estudar
 
-1. Siga os domínios e assuntos na ordem do roteiro, ou use o índice para revisar um tema específico.
-2. Leia o README do assunto e escreva pequenos programas para testar cada item da lista.
-3. Antes de consultar a saída do programa, preveja o resultado e explique as regras envolvidas.
-4. Revise os casos-limite indicados nos assuntos: eles são especialmente úteis para questões de múltipla escolha.
-5. Use as listas de tópicos e os desafios dos READMEs para acompanhar seu progresso.
+1. Se ainda não programa em Java, comece pelos [fundamentos da trilha](trilha-iniciante.html#fundamentos): compile e execute o primeiro exemplo antes de seguir para os assuntos.
+2. Em cada assunto, leia o objetivo, execute o exemplo e tente a atividade prática antes de conferir a resposta da checagem.
+3. Use o glossário quando encontrar um termo novo e retorne aos tópicos “Estude” e “Verifique se consegue” para aprofundar a revisão.
+4. Ao preparar a certificação, siga o índice por domínio e confirme os objetivos oficiais atuais do exame.
 
 Os exemplos ficam em subpastas de `src/`, separadas por domínio e assunto.
 
@@ -36,7 +39,23 @@ As preferências persistentes do projeto ficam em [`.github/copilot-instructions
 
 ## Executar os exemplos
 
-Cada assunto tem uma classe Java independente, com `main` e saída pelo console, organizada em `src/<domínio>/<assunto>/`. Por exemplo, para compilar e executar o exemplo de arrays no PowerShell:
+Cada assunto tem uma classe Java independente, com `main` e saída pelo console, organizada em `src/<domínio>/<assunto>/`. O exemplo inicial da trilha fica em `src/java_Basico/FundamentosJava.java`. Para compilá-lo e executá-lo no PowerShell a partir da raiz:
+
+```powershell
+New-Item -ItemType Directory -Force target\bin | Out-Null
+javac -d target\bin src\java_Basico\FundamentosJava.java
+java -cp target\bin FundamentosJava
+```
+
+No macOS/Linux:
+
+```sh
+mkdir -p target/bin
+javac -d target/bin src/java_Basico/FundamentosJava.java
+java -cp target/bin FundamentosJava
+```
+
+Exemplo de um assunto de certificação no PowerShell:
 
 ```powershell
 javac -d target\bin src\05-arrays-e-colecoes\arrays\ArraysExample.java

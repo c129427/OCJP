@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="site.css">
+  <title>Trilha para iniciantes | Guia de estudos OCJP</title>
+  <meta name="description" content="Percurso progressivo para começar a programar em Java 17 e praticar com um projeto incremental.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="index.html">Índice</a>
+        <a href="resumo.html">Resumo</a>
+        <a href="trilha-iniciante.html">Começar</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="exames.html">Comparar exames</a>
+        <a href="glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Trilha para iniciantes · Java SE 17</p>
+          <h1>Comece a programar em Java</h1>
+          <p class="hero-description">Uma sequência prática para quem está começando, com ambiente, conceitos essenciais e um projeto que cresce junto com os estudos.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">Fundamentos + 4 etapas</li><li class="badge">19 assuntos</li><li class="badge">20–30 min por assunto</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<section class="beginner-callout"><div><strong>Como usar esta trilha</strong><span>Comece pelos fundamentos, estude na ordem e escreva o código você mesmo. A trilha complementa, mas não substitui, o roteiro completo da certificação.</span></div><a href="index.html">Ver roteiro 1Z0-829 →</a></section>
+        <section class="progress-tools" aria-label="Progresso da trilha">
+          <p id="progress-status" role="status" aria-live="polite">Carregando seu progresso...</p>
+          <button class="progress-clear" id="clear-progress" type="button">Limpar progresso salvo</button>
+        </section>
+        <h2 id="fundamentos">Fundamentos antes da trilha</h2>
+        <p>Se esta é sua primeira experiência com Java, faça esta aula antes de estudar tipos e operadores. Você vai escrever um programa que lê uma resposta, guarda valores em variáveis e mostra um resultado.</p>
+        <ol class="foundation-objectives">
+          <li>Identificar a classe e o método <code>main</code> que iniciam um programa.</li>
+          <li>Declarar variáveis, atribuir valores e usar tipos como <code>String</code> e <code>int</code>.</li>
+          <li>Exibir mensagens, ler texto pelo console, compilar com <code>javac</code> e executar com <code>java</code>.</li>
+        </ol>
+        <h2>Prepare o ambiente</h2>
+        <ol>
+          <li>Instale um JDK 17 e abra um terminal na pasta em que vai praticar.</li>
+          <li>Confirme a instalação executando <code>java -version</code> e <code>javac -version</code>.</li>
+        </ol>
+        <p>Se o terminal não reconhecer <code>java</code> ou <code>javac</code>, revise a instalação e a configuração do PATH do sistema antes de avançar.</p>
+        <h3>Seu primeiro programa com variáveis e entrada</h3>
+        <p>Abra o arquivo <a href="src/java_Basico/FundamentosJava.java"><code>FundamentosJava.java</code></a>. Ele contém o programa completo; o nome do arquivo corresponde à classe pública. A variável <code>nome</code> guarda texto, <code>idade</code> guarda um inteiro, e a atribuição guarda em <code>proximaIdade</code> o resultado de uma expressão.</p>
+        <details class="source-code" open><summary>Exemplo completo</summary><pre><code class="language-java">import java.util.Scanner;
+
+public class FundamentosJava {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(&quot;Qual é seu nome?&quot;);
+        String nome = scanner.nextLine();
+
+        System.out.println(&quot;Qual é sua idade?&quot;);
+        int idade = scanner.nextInt();
+
+        int proximaIdade = idade + 1;
+        System.out.println(&quot;Olá, &quot; + nome + &quot;! No próximo ano você terá &quot; + proximaIdade + &quot;.&quot;);
+    }
+}
+</code></pre></details>
+        <p>No PowerShell, compile e execute a partir da raiz do repositório:</p>
+        <pre><code>New-Item -ItemType Directory -Force target\bin | Out-Null
+javac -d target\bin src/java_Basico/FundamentosJava.java
+java -cp target\bin FundamentosJava</code></pre>
+        <p>No macOS/Linux, use o terminal:</p>
+        <pre><code>mkdir -p target/bin
+javac -d target/bin src/java_Basico/FundamentosJava.java
+java -cp target/bin FundamentosJava</code></pre>
+        <p>Digite <code>Ana</code> e depois <code>20</code>. A saída esperada será:</p>
+        <pre><code>Qual é seu nome?
+Qual é sua idade?
+Olá, Ana! No próximo ano você terá 21.</code></pre>
+        <p><code>System.out.print</code> mantém o cursor na mesma linha; <code>System.out.println</code> termina a linha. <code>Scanner.nextLine</code> lê o nome digitado. O método <code>main</code> é o ponto de entrada; <code>javac</code> compila o arquivo e <code>java</code> executa a classe compilada.</p>
+        <section class="practice-task">
+          <p class="eyebrow-dark">PRATIQUE AGORA</p>
+          <h3>Faça uma alteração e teste</h3>
+          <p>Troque a pergunta para “Qual linguagem você está aprendendo?” e imprima uma segunda confirmação. Depois informe outros valores e verifique a saída.</p>
+          <p class="task-check">Concluído quando: o arquivo compilar, ler as duas entradas e imprimir uma resposta com o valor informado.</p>
+        </section>
+        <section class="quick-check">
+          <p class="eyebrow-dark">CHECAGEM RÁPIDA</p>
+          <h3>O que a variável <code>idade</code> guarda depois de <code>int idade = 20;</code>?</h3>
+          <details class="answer-key"><summary>Conferir resposta comentada</summary><p>Guarda o valor inteiro <code>20</code>. A declaração cria a variável e a atribuição inicializa seu valor; em Java, variáveis locais precisam receber valor antes do uso.</p></details>
+        </section>
+        <aside class="beginner-callout"><div><strong>Erro comum</strong><span>Se o compilador disser que a classe pública deve estar em outro arquivo, confira se o nome é exatamente <code>FundamentosJava.java</code>. Java diferencia maiúsculas de minúsculas.</span></div></aside>
+        <h2>Erros comuns no começo</h2>
+        <div class="table-wrap"><table><thead><tr><th>Mensagem</th><th>Causa comum</th><th>O que conferir</th></tr></thead><tbody>
+          <tr><td><code>error: cannot find symbol</code></td><td>Nome de variável, método ou classe digitado de forma diferente, ou símbolo fora do escopo.</td><td>Confira maiúsculas/minúsculas, grafia e onde o símbolo foi declarado.</td></tr>
+          <tr><td><code>class OlaJava is public, should be declared in a file named OlaJava.java</code></td><td>O nome do arquivo não corresponde ao nome da classe pública.</td><td>Salve a classe pública <code>OlaJava</code> no arquivo <code>OlaJava.java</code>.</td></tr>
+          <tr><td><code>error: ';' expected</code></td><td>Uma instrução está sem ponto e vírgula ou há um erro de sintaxe próximo.</td><td>Confira o fim da instrução e a linha indicada pelo compilador.</td></tr>
+          <tr><td><code>NullPointerException</code></td><td>O programa tentou usar uma referência que está <code>null</code>.</td><td>Verifique onde o objeto deveria ser criado e trate o caso ausente antes de chamar métodos.</td></tr>
+        </tbody></table></div>
+        <h2>Trilha passo a passo</h2>
+        <p>Os capítulos completos continuam organizados por domínio do exame; aqui os fundamentos essenciais vêm primeiro e os assuntos estão reordenados por dependência. Os detalhes de prova ficam para a seção de aprofundamento.</p>
+        <div class="learning-stages"><section class="learning-stage">
+          <h3>1. Primeiros programas</h3>
+          <p>Aprenda a ler e escrever pequenos programas antes de estudar APIs maiores.</p>
+          <ol class="learning-steps"><li><span class="step-number">01</span><div><a href="01-valores-texto-e-datas/tipos-primitivos-e-wrappers.html">Tipos primitivos e classes wrapper</a><p>Os oito primitivos: <code>boolean</code>, <code>byte</code>, <code>short</code>, <code>char</code>, <code>int</code>, <code>long</code>, <code>float</code> e <code>double</code>.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-tipos-primitivos-e-wrappers" aria-label="Marcar Tipos primitivos e classes wrapper como concluído"><span class="sr-only">Marcar Tipos primitivos e classes wrapper como concluído</span></label></li><li><span class="step-number">02</span><div><a href="01-valores-texto-e-datas/operadores-expressoes-e-conversoes.html">Operadores, expressões e conversões</a><p>Monte expressões com casts, operadores prefixados/pós-fixados e curto-circuito. Para cada uma, anote a ordem de avaliação, o tipo de cada subexpressão e o resultado final.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-operadores-expressoes-e-conversoes" aria-label="Marcar Operadores, expressões e conversões como concluído"><span class="sr-only">Marcar Operadores, expressões e conversões como concluído</span></label></li><li><span class="step-number">03</span><div><a href="01-valores-texto-e-datas/texto-string-e-stringbuilder.html">Texto com <code>String</code> e <code>StringBuilder</code></a><p>Preveja o conteúdo final após uma sequência de chamadas encadeadas e diferencie mutação de criação de novos objetos.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-texto-string-e-stringbuilder" aria-label="Marcar Texto com `String` e `StringBuilder` como concluído"><span class="sr-only">Marcar Texto com `String` e `StringBuilder` como concluído</span></label></li><li><span class="step-number">04</span><div><a href="02-controle-de-fluxo/condicionais-e-switch.html">Estruturas condicionais e <code>switch</code></a><p>Reescreva um <code>switch</code> tradicional como expressão. Verifique quais caminhos retornam valor e quais precisam de <code>default</code> ou <code>yield</code>.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-condicionais-e-switch" aria-label="Marcar Estruturas condicionais e `switch` como concluído"><span class="sr-only">Marcar Estruturas condicionais e `switch` como concluído</span></label></li><li><span class="step-number">05</span><div><a href="02-controle-de-fluxo/lacos-e-desvios.html">Laços e desvios</a><p>Trace laços aninhados com <code>break</code> e <code>continue</code> rotulados e registre cada valor impresso e quantas vezes o corpo é executado.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-lacos-e-desvios" aria-label="Marcar Laços e desvios como concluído"><span class="sr-only">Marcar Laços e desvios como concluído</span></label></li><li><span class="step-number">06</span><div><a href="02-controle-de-fluxo/metodos-sobrecarga-e-varargs.html">Métodos, sobrecarga e varargs</a><p>Assinatura, modificadores, tipo de retorno, parâmetros e corpo de métodos.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-metodos-sobrecarga-e-varargs" aria-label="Marcar Métodos, sobrecarga e varargs como concluído"><span class="sr-only">Marcar Métodos, sobrecarga e varargs como concluído</span></label></li></ol>
+          <p class="stage-completion"><strong>Marco:</strong> explique um conceito sem copiar e faça uma pequena alteração no exemplo.</p>
+        </section><section class="learning-stage">
+          <h3>2. Organize o código com objetos</h3>
+          <p>Modele dados e responsabilidades em classes e entenda como os objetos são criados.</p>
+          <ol class="learning-steps"><li><span class="step-number">01</span><div><a href="03-poo/classes-objetos-e-encapsulamento.html">Classes, objetos e encapsulamento</a><p>Desenhe a sequência de inicialização de um objeto e identifique o estado observado por cada método chamado.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-classes-objetos-e-encapsulamento" aria-label="Marcar Classes, objetos e encapsulamento como concluído"><span class="sr-only">Marcar Classes, objetos e encapsulamento como concluído</span></label></li><li><span class="step-number">02</span><div><a href="03-poo/construtores-e-inicializacao.html">Construtores e inicialização</a><p>Construtor padrão fornecido pelo compilador somente quando nenhum construtor é declarado.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-construtores-e-inicializacao" aria-label="Marcar Construtores e inicialização como concluído"><span class="sr-only">Marcar Construtores e inicialização como concluído</span></label></li><li><span class="step-number">03</span><div><a href="03-poo/interfaces-e-enums.html">Interfaces e enums</a><p>Implemente duas interfaces com métodos <code>default</code> de mesmo nome e resolva explicitamente o conflito na classe.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-interfaces-e-enums" aria-label="Marcar Interfaces e enums como concluído"><span class="sr-only">Marcar Interfaces e enums como concluído</span></label></li><li><span class="step-number">04</span><div><a href="03-poo/heranca-sobrescrita-e-polimorfismo.html">Herança, sobrescrita e polimorfismo</a><p>Trace chamadas de método e acesso a campos usando variáveis de tipos declarado e real diferentes. Justifique cada resultado.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-heranca-sobrescrita-e-polimorfismo" aria-label="Marcar Herança, sobrescrita e polimorfismo como concluído"><span class="sr-only">Marcar Herança, sobrescrita e polimorfismo como concluído</span></label></li></ol>
+          <p class="stage-completion"><strong>Marco:</strong> explique um conceito sem copiar e faça uma pequena alteração no exemplo.</p>
+        </section><section class="learning-stage">
+          <h3>3. Trabalhe com dados e falhas</h3>
+          <p>Guarde coleções de dados, restrinja seus tipos e trate situações inesperadas.</p>
+          <ol class="learning-steps"><li><span class="step-number">01</span><div><a href="05-arrays-e-colecoes/arrays.html">Arrays</a><p>Compare arrays com <code>==</code>, <code>equals</code> e <code>Arrays.equals</code>; teste ordenação e busca binária com os pré-requisitos corretos.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-arrays" aria-label="Marcar Arrays como concluído"><span class="sr-only">Marcar Arrays como concluído</span></label></li><li><span class="step-number">02</span><div><a href="05-arrays-e-colecoes/interfaces-e-colecoes.html">Interfaces e implementações de coleções</a><p>Escolha uma implementação para cada cenário e explique como ordem, duplicatas, mutabilidade e chave afetam o resultado.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-interfaces-e-colecoes" aria-label="Marcar Interfaces e implementações de coleções como concluído"><span class="sr-only">Marcar Interfaces e implementações de coleções como concluído</span></label></li><li><span class="step-number">03</span><div><a href="05-arrays-e-colecoes/generics.html">Generics</a><p>Classes, interfaces e métodos genéricos; parâmetros de tipo e inferência.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-generics" aria-label="Marcar Generics como concluído"><span class="sr-only">Marcar Generics como concluído</span></label></li><li><span class="step-number">04</span><div><a href="04-excecoes/hierarquia-e-tipos-de-excecao.html">Hierarquia e tipos de exceção</a><p>Hierarquia <code>Throwable</code>, <code>Error</code>, <code>Exception</code> e <code>RuntimeException</code>.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-hierarquia-e-tipos-de-excecao" aria-label="Marcar Hierarquia e tipos de exceção como concluído"><span class="sr-only">Marcar Hierarquia e tipos de exceção como concluído</span></label></li><li><span class="step-number">05</span><div><a href="04-excecoes/try-catch-finally-e-multicatch.html"><code>try</code>, <code>catch</code>, <code>finally</code> e multi-catch</a><p>Monte uma tabela de fluxo para métodos com <code>return</code> no <code>try</code> e no <code>finally</code>. Evite depender de retorno ou lançamento de exceção dentro de <code>finally</code>.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-try-catch-finally-e-multicatch" aria-label="Marcar `try`, `catch`, `finally` e multi-catch como concluído"><span class="sr-only">Marcar `try`, `catch`, `finally` e multi-catch como concluído</span></label></li></ol>
+          <p class="stage-completion"><strong>Marco:</strong> explique um conceito sem copiar e faça uma pequena alteração no exemplo.</p>
+        </section><section class="learning-stage">
+          <h3>4. Use APIs do dia a dia</h3>
+          <p>Aplique os fundamentos para transformar dados, usar arquivos e lidar com datas.</p>
+          <ol class="learning-steps"><li><span class="step-number">01</span><div><a href="06-streams-e-lambdas/interfaces-funcionais-lambdas-e-referencias.html">Interfaces funcionais, lambdas e method references</a><p>Converta lambdas em method references quando adequado e explique qual método é chamado e como os argumentos são associados.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-interfaces-funcionais-lambdas-e-referencias" aria-label="Marcar Interfaces funcionais, lambdas e method references como concluído"><span class="sr-only">Marcar Interfaces funcionais, lambdas e method references como concluído</span></label></li><li><span class="step-number">02</span><div><a href="06-streams-e-lambdas/streams-e-pipelines.html">Streams e pipelines</a><p>Criação de streams a partir de coleções, arrays, valores e <code>Stream.of</code>.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-streams-e-pipelines" aria-label="Marcar Streams e pipelines como concluído"><span class="sr-only">Marcar Streams e pipelines como concluído</span></label></li><li><span class="step-number">03</span><div><a href="09-io/nio2-path-e-files.html">NIO.2: <code>Path</code> e <code>Files</code></a><p><code>Path</code>, <code>Paths</code>/<code>Path.of</code>, resolução, normalização e comparação de caminhos.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-nio2-path-e-files" aria-label="Marcar NIO.2: `Path` e `Files` como concluído"><span class="sr-only">Marcar NIO.2: `Path` e `Files` como concluído</span></label></li><li><span class="step-number">04</span><div><a href="01-valores-texto-e-datas/data-e-hora-java-time.html">Data e hora com <code>java.time</code></a><p>Tipos imutáveis: <code>LocalDate</code>, <code>LocalTime</code>, <code>LocalDateTime</code>, <code>ZonedDateTime</code> e <code>Instant</code>.</p></div><label class="progress-check"><input type="checkbox" data-progress-id="topic-data-e-hora-java-time" aria-label="Marcar Data e hora com `java.time` como concluído"><span class="sr-only">Marcar Data e hora com `java.time` como concluído</span></label></li></ol>
+          <p class="stage-completion"><strong>Marco:</strong> explique um conceito sem copiar e faça uma pequena alteração no exemplo.</p>
+        </section></div>
+        <h2 id="projeto">Projeto incremental: lista de tarefas</h2>
+        <p>Construa uma aplicação de console sem frameworks. Cada checkpoint parte do anterior e precisa compilar antes de avançar. Salvar em arquivo é uma etapa opcional de aprofundamento.</p>
+        <section class="project-starter">
+          <h3>Ponto de partida compilável</h3>
+          <p>O primeiro checkpoint já tem uma versão mínima executável. Abra <a href="src/java_Basico/ListaTarefas.java"><code>ListaTarefas.java</code></a>, compile, execute e digite uma descrição antes de fazer alterações.</p>
+          <details class="source-code"><summary>Ver código inicial</summary><pre><code class="language-java">import java.util.Scanner;
+
+public class ListaTarefas {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(&quot;Digite uma tarefa:&quot;);
+        String descricao = scanner.nextLine();
+
+        System.out.println(&quot;Tarefa adicionada: &quot; + descricao);
+    }
+}
+</code></pre></details>
+          <p>No PowerShell, crie a pasta de saída e execute o programa:</p>
+          <pre><code>New-Item -ItemType Directory -Force target\bin | Out-Null
+javac -d target\bin src/java_Basico/ListaTarefas.java
+java -cp target\bin ListaTarefas</code></pre>
+          <p>Digite <code>estudar Java</code>. A saída esperada é:</p>
+          <pre><code>Digite uma tarefa:
+Tarefa adicionada: estudar Java</code></pre>
+        </section>
+        <ol class="project-milestones"><li><div class="project-milestone-heading"><strong>1. Capturar e mostrar uma tarefa</strong><label class="progress-check"><input type="checkbox" data-progress-id="project-1" aria-label="Marcar etapa 1 como concluída"><span class="sr-only">Marcar etapa 1 como concluída</span></label></div><p>Leia uma descrição com <code>Scanner</code> e mostre uma confirmação. Esta primeira versão deve compilar e funcionar sem classes adicionais.</p><p class="project-expected"><strong>Teste de conclusão:</strong> Entrada: estudar Java. Saída esperada: Tarefa adicionada: estudar Java.</p><span>Revise: <a href="01-valores-texto-e-datas/tipos-primitivos-e-wrappers.html">Tipos primitivos e classes wrapper</a> · <a href="01-valores-texto-e-datas/texto-string-e-stringbuilder.html">Texto com `String` e `StringBuilder`</a> · <a href="src/java_Basico/ListaTarefas.java">Abrir código inicial</a></span></li><li><div class="project-milestone-heading"><strong>2. Guardar várias tarefas</strong><label class="progress-check"><input type="checkbox" data-progress-id="project-2" aria-label="Marcar etapa 2 como concluída"><span class="sr-only">Marcar etapa 2 como concluída</span></label></div><p>Troque a variável única por <code>ArrayList&lt;String&gt;</code>. Permita adicionar mais de uma tarefa e listar todas com um laço.</p><p class="project-expected"><strong>Teste de conclusão:</strong> Adicione duas tarefas; ao listar, as duas aparecem na ordem de inclusão.</p><span>Revise: <a href="05-arrays-e-colecoes/arrays.html">Arrays</a> · <a href="05-arrays-e-colecoes/interfaces-e-colecoes.html">Interfaces e implementações de coleções</a> · <a href="02-controle-de-fluxo/lacos-e-desvios.html">Laços e desvios</a></span></li><li><div class="project-milestone-heading"><strong>3. Criar um menu</strong><label class="progress-check"><input type="checkbox" data-progress-id="project-3" aria-label="Marcar etapa 3 como concluída"><span class="sr-only">Marcar etapa 3 como concluída</span></label></div><p>Adicione opções para incluir, listar e sair. Separe ações em métodos e repita o menu até a opção de saída.</p><p class="project-expected"><strong>Teste de conclusão:</strong> Escolha sair: o programa termina sem imprimir o menu novamente.</p><span>Revise: <a href="02-controle-de-fluxo/metodos-sobrecarga-e-varargs.html">Métodos, sobrecarga e varargs</a> · <a href="02-controle-de-fluxo/condicionais-e-switch.html">Estruturas condicionais e `switch`</a> · <a href="02-controle-de-fluxo/lacos-e-desvios.html">Laços e desvios</a></span></li><li><div class="project-milestone-heading"><strong>4. Modelar cada tarefa</strong><label class="progress-check"><input type="checkbox" data-progress-id="project-4" aria-label="Marcar etapa 4 como concluída"><span class="sr-only">Marcar etapa 4 como concluída</span></label></div><p>Substitua <code>String</code> por uma classe <code>Tarefa</code>, com descrição e estado concluído encapsulados.</p><p class="project-expected"><strong>Teste de conclusão:</strong> Crie uma tarefa e consulte a descrição e o estado por métodos públicos.</p><span>Revise: <a href="03-poo/classes-objetos-e-encapsulamento.html">Classes, objetos e encapsulamento</a> · <a href="03-poo/construtores-e-inicializacao.html">Construtores e inicialização</a></span></li><li><div class="project-milestone-heading"><strong>5. Concluir e validar</strong><label class="progress-check"><input type="checkbox" data-progress-id="project-5" aria-label="Marcar etapa 5 como concluída"><span class="sr-only">Marcar etapa 5 como concluída</span></label></div><p>Permita concluir uma tarefa pela posição. Verifique a posição antes de acessar a lista e mostre uma mensagem se não for válida.</p><p class="project-expected"><strong>Teste de conclusão:</strong> Teste a primeira posição, a última posição e uma posição inexistente; nenhuma entrada inválida deve encerrar o programa.</p><span>Revise: <a href="02-controle-de-fluxo/condicionais-e-switch.html">Estruturas condicionais e `switch`</a> · <a href="04-excecoes/hierarquia-e-tipos-de-excecao.html">Hierarquia e tipos de exceção</a></span></li><li><div class="project-milestone-heading"><strong>6. Salvar em arquivo (opcional)</strong><label class="progress-check"><input type="checkbox" data-progress-id="project-6" aria-label="Marcar etapa 6 como concluída"><span class="sr-only">Marcar etapa 6 como concluída</span></label></div><p>Quando as etapas anteriores estiverem funcionando, grave e carregue as tarefas em arquivo local com recursos fechados corretamente.</p><p class="project-expected"><strong>Teste de conclusão:</strong> Feche e reabra o programa: as tarefas salvas continuam disponíveis.</p><span>Revise: <a href="09-io/nio2-path-e-files.html">NIO.2: `Path` e `Files`</a> · <a href="04-excecoes/try-with-resources.html">Try-with-resources</a></span></li></ol>
+        <h2>Como saber se pode avançar</h2>
+        <ul>
+          <li>Consegue explicar o objetivo do código com suas próprias palavras.</li>
+          <li>Compila e executa o exemplo sem copiar uma solução completa.</li>
+          <li>Consegue alterar uma entrada e prever como o resultado muda.</li>
+          <li>Resolveu o marco da etapa; anote dúvidas e retorne ao assunto se precisar consultar a resposta toda vez.</li>
+        </ul>
+        <p>O glossário explica os termos usados nas páginas; quando estiver confortável com os fundamentos, use o <a href="index.html">índice completo</a> e consulte os tópicos de revisão para o exame.</p>
+        <script>
+      (() => {
+        const key = "ocjp-study-progress-v1";
+        const status = document.getElementById("progress-status");
+        const controls = [...document.querySelectorAll("[data-progress-id]")];
+        const clearButton = document.getElementById("clear-progress");
+        let saved;
+        try {
+          saved = JSON.parse(localStorage.getItem(key) || "{}");
+          if (!saved || typeof saved !== "object" || Array.isArray(saved)) saved = {};
+        } catch (error) {
+          status.textContent = "O navegador não permitiu acessar o armazenamento local; as marcações não serão salvas.";
+          controls.forEach((control) => { control.disabled = true; });
+          clearButton.disabled = true;
+          return;
+        }
+        const updateStatus = () => {
+          const completed = controls.filter((control) => control.checked).length;
+          status.textContent = `${completed} de ${controls.length} etapas marcadas como concluídas neste navegador.`;
+        };
+        controls.forEach((control) => {
+          control.checked = saved[control.dataset.progressId] === true;
+          control.addEventListener("change", () => {
+            saved[control.dataset.progressId] = control.checked;
+            try {
+              localStorage.setItem(key, JSON.stringify(saved));
+              updateStatus();
+            } catch (error) {
+              status.textContent = "Não foi possível salvar o progresso; libere espaço ou habilite o armazenamento local.";
+            }
+          });
+        });
+        clearButton.addEventListener("click", () => {
+          try {
+            localStorage.removeItem(key);
+            saved = {};
+            controls.forEach((control) => { control.checked = false; });
+            status.textContent = "Progresso apagado.";
+          } catch (error) {
+            status.textContent = "Não foi possível apagar o progresso salvo.";
+          }
+        });
+        updateStatus();
+      })();
+      </script>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>

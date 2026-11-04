@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="../site.css">
+  <title>Texto com `String` e `StringBuilder` | Guia de estudos OCJP</title>
+  <meta name="description" content="Preveja o conteúdo final após uma sequência de chamadas encadeadas e diferencie mutação de criação de novos objetos.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="../index.html">Índice</a>
+        <a href="../resumo.html">Resumo</a>
+        <a href="../trilha-iniciante.html">Começar</a>
+        <a href="../quiz.html">Quiz</a>
+        <a href="../exames.html">Comparar exames</a>
+        <a href="../glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="../exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="../exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="../exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Capítulo 01 · Valores, texto e datas</p>
+          <h1>Texto com <code>String</code> e <code>StringBuilder</code></h1>
+          <p class="hero-description">Preveja o conteúdo final após uma sequência de chamadas encadeadas e diferencie mutação de criação de novos objetos.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">Fundamento essencial</li><li class="badge">Base: Java 17</li><li class="badge">1Z0-829</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<a class="map-link" href="texto-string-e-stringbuilder.svg">
+          <img src="texto-string-e-stringbuilder.svg" alt="Miniatura do mapa mental: Texto com `String` e `StringBuilder`">
+          <span>Ver mapa mental deste assunto</span>
+        </a>
+<section class="learning-guide">
+        <div class="learning-objective"><span>OBJETIVO DE APRENDIZAGEM</span><p>Distinguir identidade de referência, igualdade de conteúdo e operações mutáveis ou imutáveis.</p></div>
+        <p class="study-mode"><strong>Primeiro contato:</strong> aprenda o conceito e pratique antes de consultar os detalhes de prova. <a href="../trilha-iniciante.html#fundamentos">Voltar aos fundamentos</a> se algum termo ainda for novo.</p>
+
+        <p class="study-meta"><strong>Ritmo sugerido:</strong> 20–30 minutos · leia, execute o exemplo e tente a atividade antes de consultar referências.</p>
+        <p class="study-meta"><strong>Etapa anterior sugerida:</strong> <a href="operadores-expressoes-e-conversoes.html">Operadores, expressões e conversões</a><br><strong>Próximo recomendado:</strong> <a href="../02-controle-de-fluxo/condicionais-e-switch.html">Estruturas condicionais e <code>switch</code></a></p>
+        <ol class="lesson-routine" aria-label="Roteiro da microaula">
+          <li>Leia o objetivo e localize a ideia principal no conteúdo abaixo.</li>
+          <li>Preveja o resultado, compile e execute o exemplo.</li>
+          <li>Faça a atividade sem copiar a solução e confira a checagem comentada.</li>
+        </ol>
+        <section class="example-panel">
+          <div class="example-heading"><div><p class="eyebrow-dark">EXEMPLO DE CONSOLE</p><h2>Veja a regra em execução</h2></div><a class="button-link" href="../src/01-valores-texto-e-datas/texto-string-e-stringbuilder/TextoStringEStringBuilderExample.java" target="_blank" rel="noopener noreferrer">Abrir arquivo Java ↗</a></div>
+          <p>Antes de executar, anote sua previsão. Compile o exemplo com o JDK e compare a saída observada com as regras deste assunto.</p>
+          <details class="run-command"><summary>Comandos para compilar e executar</summary><pre><code>javac -d target/bin src/01-valores-texto-e-datas/texto-string-e-stringbuilder/TextoStringEStringBuilderExample.java
+java -cp target/bin TextoStringEStringBuilderExample</code></pre><p>A execução imprime o resultado no console para você comparar com sua previsão.</p></details>
+          <details class="source-code"><summary>Consultar código-fonte: TextoStringEStringBuilderExample.java</summary><pre><code class="language-java">public class TextoStringEStringBuilderExample {
+    public static void main(String[] args) {
+        System.out.println(&quot;=== String imutavel e StringBuilder mutavel ===&quot;);
+        String original = &quot;Java&quot;;
+        String novaString = original.concat(&quot; SE 17&quot;);
+        StringBuilder textoMutavel = new StringBuilder(&quot;Estudo&quot;);
+        textoMutavel.append(&quot; OCJP&quot;);
+        String textoA = new String(&quot;Java&quot;);
+        String textoB = new String(&quot;Java&quot;);
+
+        System.out.println(&quot;concat devolve uma nova String: &quot; + novaString);
+        System.out.println(&quot;A String original continua inalterada: &quot; + original);
+        System.out.println(&quot;append altera o StringBuilder: &quot; + textoMutavel);
+        System.out.println(&quot;equals compara conteudo: &quot; + textoA.equals(textoB));
+        System.out.println(&quot;== compara identidade dos objetos: &quot; + (textoA == textoB));
+    }
+}
+</code></pre></details>
+        </section>
+        <section class="practice-task">
+          <p class="eyebrow-dark">PRATIQUE AGORA</p>
+          <h2>Faça uma pequena alteração por conta própria</h2>
+          <p>Monte uma frase com <code>StringBuilder</code>, altere uma palavra e compare o resultado com uma concatenação de <code>String</code>.</p>
+          <p class="task-check">Concluído quando: o programa compilar, produzir o resultado esperado e você conseguir explicar a regra aplicada.</p>
+        </section>
+        <section class="quick-check">
+          <p class="eyebrow-dark">CHECAGEM RÁPIDA · Texto com <code>String</code> e <code>StringBuilder</code></p>
+          <h2>Depois de <code>String s = &quot;Java&quot;; s.concat(&quot; 17&quot;);</code>, qual é o valor de <code>s</code>?</h2>
+          <details class="answer-key"><summary>Conferir resposta comentada</summary><p><code>s</code> continua sendo <code>Java</code>: <code>String</code> é imutável e <code>concat</code> devolve uma nova string que precisa ser atribuída.</p></details>
+        </section>
+        <p class="glossary-link"><a href="../glossario.html">Consulte o glossário de termos Java ↗</a></p>
+      </section>
+<h2>Estude</h2>
+<ul><li><code>String</code> é imutável; operações que parecem alterar uma string produzem outro valor.</li><li>Concatenação com <code>+</code>, inclusive quando combinada com outros tipos e com parênteses.</li><li>Comparação de conteúdo com <code>equals</code> e comparação de identidade com <code>==</code>.</li><li>Pool de strings, literais e o efeito de <code>intern()</code> em cenários simples.</li><li>Métodos comuns: <code>length</code>, <code>charAt</code>, <code>substring</code>, <code>indexOf</code>, <code>startsWith</code>, <code>contains</code>, <code>replace</code>, <code>trim</code>, <code>strip</code>, <code>toUpperCase</code> e <code>toLowerCase</code>.</li><li>Diferenças de <code>StringBuilder</code> e <code>StringBuffer</code>; construção e mutação com <code>append</code>, <code>insert</code>, <code>delete</code>, <code>replace</code>, <code>reverse</code> e <code>toString</code>.</li><li>Índices e limites: índices começam em zero; intervalos inválidos podem lançar <code>StringIndexOutOfBoundsException</code>.</li></ul>
+<h2>Prática</h2>
+<p>Preveja o conteúdo final após uma sequência de chamadas encadeadas e diferencie mutação de criação de novos objetos.</p>
+<section class="chapter-exam-fit">
+        <h2>Como este capítulo se relaciona com cada exame</h2>
+        <div class="exam-fit-grid"><div class="exam-fit"><span class="exam-version">1Z0-808 · Java 8</span><p>Fundamentos reaproveitáveis; valide APIs e objetivos específicos de Java 8.</p></div><div class="exam-fit"><span class="exam-version">1Z0-829 · Java 17</span><p>Base de estudo deste portal; confirme o mapeamento com o blueprint vigente.</p></div><div class="exam-fit"><span class="exam-version">1Z0-830 · Java 21</span><p>Conceitos úteis; confira as APIs e mudanças de linguagem em Java 21.</p></div></div>
+        <p class="matrix-note">Orientação editorial sobre reaproveitamento do material; não representa objetivos oficiais nem garante cobertura do exame. Consulte o <a href="../exames.html">comparativo e as fontes da Oracle</a>.</p>
+      </section>
+<section class="related-topics"><h2>Conecte com outros assuntos</h2><div class="related-grid"><a class="related-link" href="../05-arrays-e-colecoes/arrays.html">Arrays <span aria-hidden="true">→</span></a><a class="related-link" href="../11-localizacao/formatacao-e-parsing.html">Formatação e parsing localizado <span aria-hidden="true">→</span></a></div></section>
+<nav class="chapter-nav" aria-label="Navegação entre assuntos">
+          <a href="operadores-expressoes-e-conversoes.html">← Assunto anterior</a>
+          <a href='data-e-hora-java-time.html'>Próximo assunto →</a>
+        </nav>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>

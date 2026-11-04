@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="../site.css">
+  <title>Threads e executors | Guia de estudos OCJP</title>
+  <meta name="description" content="Submeta tarefas que retornam valores, aguarde os resultados e encerre o executor. Explique o comportamento se uma tarefa falhar.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="../index.html">Índice</a>
+        <a href="../resumo.html">Resumo</a>
+        <a href="../trilha-iniciante.html">Começar</a>
+        <a href="../quiz.html">Quiz</a>
+        <a href="../exames.html">Comparar exames</a>
+        <a href="../glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="../exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="../exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="../exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Capítulo 08 · Concorrência</p>
+          <h1>Threads e executors</h1>
+          <p class="hero-description">Submeta tarefas que retornam valores, aguarde os resultados e encerre o executor. Explique o comportamento se uma tarefa falhar.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">Aprofundamento</li><li class="badge">Base: Java 17</li><li class="badge">1Z0-829</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<a class="map-link" href="threads-e-executors.svg">
+          <img src="threads-e-executors.svg" alt="Miniatura do mapa mental: Threads e executors">
+          <span>Ver mapa mental deste assunto</span>
+        </a>
+<section class="learning-guide">
+        <div class="learning-objective"><span>OBJETIVO DE APRENDIZAGEM</span><p>Distinguir criação de threads, execução de tarefas, resultados futuros e encerramento de executors.</p></div>
+        <p class="study-mode"><strong>Aprofundamento e revisão 1Z0-829:</strong> use esta página depois dos fundamentos. Os tópicos de prova complementam a trilha inicial e não são pré-requisitos para começar a programar.</p>
+
+        <p class="study-meta"><strong>Ritmo sugerido:</strong> 20–30 minutos · leia, execute o exemplo e tente a atividade antes de consultar referências.</p>
+        <p class="study-meta"><strong>Etapa anterior sugerida:</strong> <a href="../trilha-iniciante.html#fundamentos">Fundamentos para iniciantes</a><br><strong>Próximo recomendado:</strong> <a href="sincronizacao-e-visibilidade.html">Sincronização e visibilidade</a></p>
+        <ol class="lesson-routine" aria-label="Roteiro da microaula">
+          <li>Leia o objetivo e localize a ideia principal no conteúdo abaixo.</li>
+          <li>Preveja o resultado, compile e execute o exemplo.</li>
+          <li>Faça a atividade sem copiar a solução e confira a checagem comentada.</li>
+        </ol>
+        <section class="example-panel">
+          <div class="example-heading"><div><p class="eyebrow-dark">EXEMPLO DE CONSOLE</p><h2>Veja a regra em execução</h2></div><a class="button-link" href="../src/08-concorrencia/threads-e-executors/ThreadsEExecutorsExample.java" target="_blank" rel="noopener noreferrer">Abrir arquivo Java ↗</a></div>
+          <p>Antes de executar, anote sua previsão. Compile o exemplo com o JDK e compare a saída observada com as regras deste assunto.</p>
+          <details class="run-command"><summary>Comandos para compilar e executar</summary><pre><code>javac -d target/bin src/08-concorrencia/threads-e-executors/ThreadsEExecutorsExample.java
+java -cp target/bin ThreadsEExecutorsExample</code></pre><p>A execução imprime o resultado no console para você comparar com sua previsão.</p></details>
+          <details class="source-code"><summary>Consultar código-fonte: ThreadsEExecutorsExample.java</summary><pre><code class="language-java">import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+
+public class ThreadsEExecutorsExample {
+    public static void main(String[] args) throws InterruptedException, ExecutionException {
+        System.out.println(&quot;=== Threads, Callable, Future e ExecutorService ===&quot;);
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        try {
+            Future&lt;Integer&gt; primeiraTarefa = executor.submit(() -&gt; {
+                System.out.println(&quot;Callable executada em &quot; + Thread.currentThread().getName());
+                return 20;
+            });
+            Future&lt;Integer&gt; segundaTarefa = executor.submit(() -&gt; 22);
+            int primeiroResultado = primeiraTarefa.get();
+            int segundoResultado = segundaTarefa.get();
+            System.out.println(&quot;Future.get() espera e devolve o resultado: &quot;
+                    + primeiroResultado + &quot; + &quot; + segundoResultado + &quot; = &quot;
+                    + (primeiroResultado + segundoResultado));
+        } finally {
+            executor.shutdown();
+            if (!executor.awaitTermination(5, TimeUnit.SECONDS)) {
+                executor.shutdownNow();
+            }
+        }
+    }
+}
+</code></pre></details>
+        </section>
+        <section class="practice-task">
+          <p class="eyebrow-dark">PRATIQUE AGORA</p>
+          <h2>Faça uma pequena alteração por conta própria</h2>
+          <p>Submeta duas tarefas curtas a um <code>ExecutorService</code>, aguarde os resultados e encerre o executor.</p>
+          <p class="task-check">Concluído quando: o programa compilar, produzir o resultado esperado e você conseguir explicar a regra aplicada.</p>
+        </section>
+        <section class="quick-check">
+          <p class="eyebrow-dark">CHECAGEM RÁPIDA · Threads e executors</p>
+          <h2>Qual é a diferença entre chamar <code>start()</code> e chamar <code>run()</code> diretamente?</h2>
+          <details class="answer-key"><summary>Conferir resposta comentada</summary><p><code>start()</code> agenda a execução em uma nova thread; uma chamada direta a <code>run()</code> é apenas uma chamada de método na thread atual.</p></details>
+        </section>
+        <p class="glossary-link"><a href="../glossario.html">Consulte o glossário de termos Java ↗</a></p>
+      </section>
+<h2>Estude</h2>
+<ul><li>Criar tarefas com <code>Runnable</code> e <code>Callable</code>; diferenças entre ambos e seus resultados.</li><li>Criar e iniciar uma <code>Thread</code>; diferença entre chamar <code>start()</code> e chamar <code>run()</code>.</li><li>Estados e ciclo de vida de uma thread; <code>sleep</code>, <code>join</code> e interrupção.</li><li>Tratamento de <code>InterruptedException</code> e preservação do estado de interrupção quando apropriado.</li><li><code>Executor</code>, <code>ExecutorService</code>, submissão de tarefas e encerramento com <code>shutdown</code>.</li><li><code>Future</code>, obtenção de resultado, cancelamento e exceções de tarefas.</li><li>Agendamento com <code>ScheduledExecutorService</code>.</li><li>Daemon threads e encerramento do processo.</li></ul>
+<h2>Prática</h2>
+<p>Submeta tarefas que retornam valores, aguarde os resultados e encerre o executor. Explique o comportamento se uma tarefa falhar.</p>
+<section class="chapter-exam-fit">
+        <h2>Como este capítulo se relaciona com cada exame</h2>
+        <div class="exam-fit-grid"><div class="exam-fit"><span class="exam-version">1Z0-808 · Java 8</span><p>Fundamentos reaproveitáveis; confira APIs disponíveis e objetivos de Java 8.</p></div><div class="exam-fit"><span class="exam-version">1Z0-829 · Java 17</span><p>Base de estudo deste portal; confirme o mapeamento com o blueprint vigente.</p></div><div class="exam-fit"><span class="exam-version">1Z0-830 · Java 21</span><p>Conceitos úteis; revise virtual threads e APIs Java 21 aplicáveis.</p></div></div>
+        <p class="matrix-note">Orientação editorial sobre reaproveitamento do material; não representa objetivos oficiais nem garante cobertura do exame. Consulte o <a href="../exames.html">comparativo e as fontes da Oracle</a>.</p>
+      </section>
+<section class="related-topics"><h2>Conecte com outros assuntos</h2><div class="related-grid"><a class="related-link" href="sincronizacao-e-visibilidade.html">Sincronização e visibilidade <span aria-hidden="true">→</span></a><a class="related-link" href="apis-concorrentes-e-colecoes.html">APIs concorrentes e coleções <span aria-hidden="true">→</span></a></div></section>
+<nav class="chapter-nav" aria-label="Navegação entre assuntos">
+          <a href="index.html">← Capítulo</a>
+          <a href='sincronizacao-e-visibilidade.html'>Próximo assunto →</a>
+        </nav>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>

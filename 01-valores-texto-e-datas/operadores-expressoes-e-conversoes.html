@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="../site.css">
+  <title>Operadores, expressões e conversões | Guia de estudos OCJP</title>
+  <meta name="description" content="Monte expressões com casts, operadores prefixados/pós-fixados e curto-circuito. Para cada uma, anote a ordem de avaliação, o tipo de cada subexpressão e o ">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="../index.html">Índice</a>
+        <a href="../resumo.html">Resumo</a>
+        <a href="../trilha-iniciante.html">Começar</a>
+        <a href="../quiz.html">Quiz</a>
+        <a href="../exames.html">Comparar exames</a>
+        <a href="../glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="../exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="../exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="../exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Capítulo 01 · Valores, texto e datas</p>
+          <h1>Operadores, expressões e conversões</h1>
+          <p class="hero-description">Monte expressões com casts, operadores prefixados/pós-fixados e curto-circuito. Para cada uma, anote a ordem de avaliação, o tipo de cada subexpressão e o resultado final.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">Fundamento essencial</li><li class="badge">Base: Java 17</li><li class="badge">1Z0-829</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<a class="map-link" href="operadores-expressoes-e-conversoes.svg">
+          <img src="operadores-expressoes-e-conversoes.svg" alt="Miniatura do mapa mental: Operadores, expressões e conversões">
+          <span>Ver mapa mental deste assunto</span>
+        </a>
+<section class="learning-guide">
+        <div class="learning-objective"><span>OBJETIVO DE APRENDIZAGEM</span><p>Rastrear precedência, conversões e tipo resultante antes de calcular o valor de uma expressão.</p></div>
+        <p class="study-mode"><strong>Primeiro contato:</strong> aprenda o conceito e pratique antes de consultar os detalhes de prova. <a href="../trilha-iniciante.html#fundamentos">Voltar aos fundamentos</a> se algum termo ainda for novo.</p>
+
+        <p class="study-meta"><strong>Ritmo sugerido:</strong> 20–30 minutos · leia, execute o exemplo e tente a atividade antes de consultar referências.</p>
+        <p class="study-meta"><strong>Etapa anterior sugerida:</strong> <a href="tipos-primitivos-e-wrappers.html">Tipos primitivos e classes wrapper</a><br><strong>Próximo recomendado:</strong> <a href="texto-string-e-stringbuilder.html">Texto com <code>String</code> e <code>StringBuilder</code></a></p>
+        <ol class="lesson-routine" aria-label="Roteiro da microaula">
+          <li>Leia o objetivo e localize a ideia principal no conteúdo abaixo.</li>
+          <li>Preveja o resultado, compile e execute o exemplo.</li>
+          <li>Faça a atividade sem copiar a solução e confira a checagem comentada.</li>
+        </ol>
+        <section class="example-panel">
+          <div class="example-heading"><div><p class="eyebrow-dark">EXEMPLO DE CONSOLE</p><h2>Veja a regra em execução</h2></div><a class="button-link" href="../src/01-valores-texto-e-datas/operadores-expressoes-e-conversoes/OperadoresExpressoesEConversoesExample.java" target="_blank" rel="noopener noreferrer">Abrir arquivo Java ↗</a></div>
+          <p>Antes de executar, anote sua previsão. Compile o exemplo com o JDK e compare a saída observada com as regras deste assunto.</p>
+          <details class="run-command"><summary>Comandos para compilar e executar</summary><pre><code>javac -d target/bin src/01-valores-texto-e-datas/operadores-expressoes-e-conversoes/OperadoresExpressoesEConversoesExample.java
+java -cp target/bin OperadoresExpressoesEConversoesExample</code></pre><p>A execução imprime o resultado no console para você comparar com sua previsão.</p></details>
+          <details class="source-code"><summary>Consultar código-fonte: OperadoresExpressoesEConversoesExample.java</summary><pre><code class="language-java">public class OperadoresExpressoesEConversoesExample {
+    public static void main(String[] args) {
+        System.out.println(&quot;=== Operadores, expressoes e conversoes ===&quot;);
+
+        int divisaoInteira = 7 / 2;
+        double divisaoDecimal = 7 / 2.0;
+        int conversaoComPerda = (int) 9.8;
+        int contador = 0;
+        boolean resultadoCurtoCircuito = false &amp;&amp; ++contador &gt; 0;
+        int contadorAposCurtoCircuito = contador;
+        boolean resultadoSemCurtoCircuito = false &amp; ++contador &gt; 0;
+
+        System.out.println(&quot;7 / 2: &quot; + divisaoInteira + &quot; (divisao entre inteiros descarta a fracao).&quot;);
+        System.out.println(&quot;7 / 2.0: &quot; + divisaoDecimal + &quot; (double promove a expressao).&quot;);
+        System.out.println(&quot;(int) 9.8: &quot; + conversaoComPerda + &quot; (cast remove a parte fracionaria).&quot;);
+        System.out.println(&quot;false &amp;&amp; ...: &quot; + resultadoCurtoCircuito
+                + &quot;; contador continua &quot; + contadorAposCurtoCircuito
+                + &quot; porque &amp;&amp; nao avaliou o incremento.&quot;);
+        System.out.println(&quot;false &amp; ...: &quot; + resultadoSemCurtoCircuito
+                + &quot;; o incremento foi avaliado e contador agora vale &quot; + contador + &quot;.&quot;);
+    }
+}
+</code></pre></details>
+        </section>
+        <section class="practice-task">
+          <p class="eyebrow-dark">PRATIQUE AGORA</p>
+          <h2>Faça uma pequena alteração por conta própria</h2>
+          <p>Calcule o total de dois preços inteiros e mostre também o resultado de uma divisão inteira e de uma divisão decimal.</p>
+          <p class="task-check">Concluído quando: o programa compilar, produzir o resultado esperado e você conseguir explicar a regra aplicada.</p>
+        </section>
+        <section class="quick-check">
+          <p class="eyebrow-dark">CHECAGEM RÁPIDA · Operadores, expressões e conversões</p>
+          <h2>Qual é o tipo de <code>byte + byte</code> e por que a atribuição direta de volta a <code>byte</code> não compila?</h2>
+          <details class="answer-key"><summary>Conferir resposta comentada</summary><p>A promoção numérica binária converte ambos para <code>int</code>; o resultado é <code>int</code> e exige cast explícito para voltar a <code>byte</code>.</p></details>
+        </section>
+        <p class="glossary-link"><a href="../glossario.html">Consulte o glossário de termos Java ↗</a></p>
+      </section>
+<h2>Estude</h2>
+<ul><li>Precedência e associatividade; use parênteses para tornar a avaliação explícita.</li><li>Operadores aritméticos, relacionais, lógicos, bit a bit, de atribuição e ternário.</li><li>Diferenças entre <code>&amp;&amp;</code>/<code>||</code> (curto-circuito) e <code>&amp;</code>/<code>|</code> (também podem avaliar booleanos sem curto-circuito).</li><li>Incremento e decremento prefixados e pós-fixados.</li><li>Promoção numérica binária, incluindo a promoção de <code>byte</code>, <code>short</code> e <code>char</code> para <code>int</code> em muitas expressões.</li><li>Conversões primitivas implícitas e casts explícitos, incluindo possível perda de precisão ou overflow.</li><li>Divisão inteira versus divisão em ponto flutuante; resto e overflow de inteiros.</li><li>Comparação de valores primitivos, referências e wrappers.</li></ul>
+<h2>Prática</h2>
+<p>Monte expressões com casts, operadores prefixados/pós-fixados e curto-circuito. Para cada uma, anote a ordem de avaliação, o tipo de cada subexpressão e o resultado final.</p>
+<section class="chapter-exam-fit">
+        <h2>Como este capítulo se relaciona com cada exame</h2>
+        <div class="exam-fit-grid"><div class="exam-fit"><span class="exam-version">1Z0-808 · Java 8</span><p>Fundamentos reaproveitáveis; valide APIs e objetivos específicos de Java 8.</p></div><div class="exam-fit"><span class="exam-version">1Z0-829 · Java 17</span><p>Base de estudo deste portal; confirme o mapeamento com o blueprint vigente.</p></div><div class="exam-fit"><span class="exam-version">1Z0-830 · Java 21</span><p>Conceitos úteis; confira as APIs e mudanças de linguagem em Java 21.</p></div></div>
+        <p class="matrix-note">Orientação editorial sobre reaproveitamento do material; não representa objetivos oficiais nem garante cobertura do exame. Consulte o <a href="../exames.html">comparativo e as fontes da Oracle</a>.</p>
+      </section>
+<section class="related-topics"><h2>Conecte com outros assuntos</h2><div class="related-grid"><a class="related-link" href="tipos-primitivos-e-wrappers.html">Tipos primitivos e classes wrapper <span aria-hidden="true">→</span></a><a class="related-link" href="../02-controle-de-fluxo/metodos-sobrecarga-e-varargs.html">Métodos, sobrecarga e varargs <span aria-hidden="true">→</span></a></div></section>
+<nav class="chapter-nav" aria-label="Navegação entre assuntos">
+          <a href="tipos-primitivos-e-wrappers.html">← Assunto anterior</a>
+          <a href='texto-string-e-stringbuilder.html'>Próximo assunto →</a>
+        </nav>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="../site.css">
+  <title>Serialização de objetos | Guia de estudos OCJP</title>
+  <meta name="description" content="Serializar e recuperar um objeto simples; compare os valores de campos normais, `transient` e `static` antes e depois.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="../index.html">Índice</a>
+        <a href="../resumo.html">Resumo</a>
+        <a href="../trilha-iniciante.html">Começar</a>
+        <a href="../quiz.html">Quiz</a>
+        <a href="../exames.html">Comparar exames</a>
+        <a href="../glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="../exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="../exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="../exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Capítulo 09 · Entrada e saída (I/O)</p>
+          <h1>Serialização de objetos</h1>
+          <p class="hero-description">Serializar e recuperar um objeto simples; compare os valores de campos normais, <code>transient</code> e <code>static</code> antes e depois.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">Aprofundamento</li><li class="badge">Base: Java 17</li><li class="badge">1Z0-829</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<a class="map-link" href="serializacao.svg">
+          <img src="serializacao.svg" alt="Miniatura do mapa mental: Serialização de objetos">
+          <span>Ver mapa mental deste assunto</span>
+        </a>
+<section class="learning-guide">
+        <div class="learning-objective"><span>OBJETIVO DE APRENDIZAGEM</span><p>Rastrear o estado serializado de objetos e reconhecer riscos de compatibilidade e segurança.</p></div>
+        <p class="study-mode"><strong>Aprofundamento e revisão 1Z0-829:</strong> use esta página depois dos fundamentos. Os tópicos de prova complementam a trilha inicial e não são pré-requisitos para começar a programar.</p>
+
+        <p class="study-meta"><strong>Ritmo sugerido:</strong> 20–30 minutos · leia, execute o exemplo e tente a atividade antes de consultar referências.</p>
+        <p class="study-meta"><strong>Etapa anterior sugerida:</strong> <a href="../trilha-iniciante.html#fundamentos">Fundamentos para iniciantes</a><br><strong>Próximo recomendado:</strong> <a href="streams-readers-e-writers.html">Streams, readers e writers</a></p>
+        <ol class="lesson-routine" aria-label="Roteiro da microaula">
+          <li>Leia o objetivo e localize a ideia principal no conteúdo abaixo.</li>
+          <li>Preveja o resultado, compile e execute o exemplo.</li>
+          <li>Faça a atividade sem copiar a solução e confira a checagem comentada.</li>
+        </ol>
+        <section class="example-panel">
+          <div class="example-heading"><div><p class="eyebrow-dark">EXEMPLO DE CONSOLE</p><h2>Veja a regra em execução</h2></div><a class="button-link" href="../src/09-io/serializacao/SerializacaoExample.java" target="_blank" rel="noopener noreferrer">Abrir arquivo Java ↗</a></div>
+          <p>Antes de executar, anote sua previsão. Compile o exemplo com o JDK e compare a saída observada com as regras deste assunto.</p>
+          <details class="run-command"><summary>Comandos para compilar e executar</summary><pre><code>javac -d target/bin src/09-io/serializacao/SerializacaoExample.java
+java -cp target/bin SerializacaoExample</code></pre><p>A execução imprime o resultado no console para você comparar com sua previsão.</p></details>
+          <details class="source-code"><summary>Consultar código-fonte: SerializacaoExample.java</summary><pre><code class="language-java">import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+public class SerializacaoExample {
+    private static class Estudante implements Serializable {
+        private static final long serialVersionUID = 1L;
+
+        private final String nome;
+        private final int modulo;
+        private transient String senhaTemporaria;
+
+        Estudante(String nome, int modulo, String senhaTemporaria) {
+            this.nome = nome;
+            this.modulo = modulo;
+            this.senhaTemporaria = senhaTemporaria;
+        }
+
+        @Override
+        public String toString() {
+            return &quot;Estudante{nome=&#x27;&quot; + nome + &quot;&#x27;, modulo=&quot; + modulo
+                    + &quot;, senhaTemporaria=&quot; + senhaTemporaria + &quot;}&quot;;
+        }
+    }
+
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
+        System.out.println(&quot;=== Serializacao de objetos ===&quot;);
+        System.out.println(&quot;Somente objetos Serializable podem ser gravados; transient nao e persistido.&quot;);
+        Estudante original = new Estudante(&quot;Alex&quot;, 3, &quot;nao-serializar&quot;);
+        byte[] bytes;
+        try (ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+             ObjectOutputStream saida = new ObjectOutputStream(buffer)) {
+            saida.writeObject(original);
+            bytes = buffer.toByteArray();
+        }
+
+        try (ObjectInputStream entrada =
+                     new ObjectInputStream(new ByteArrayInputStream(bytes))) {
+            Estudante recuperado = (Estudante) entrada.readObject();
+            System.out.println(&quot;Objeto original: &quot; + original);
+            System.out.println(&quot;Objeto recuperado: &quot; + recuperado);
+            System.out.println(&quot;A senha temporaria foi restaurada como null por ser transient.&quot;);
+        }
+    }
+}
+</code></pre></details>
+        </section>
+        <section class="practice-task">
+          <p class="eyebrow-dark">PRATIQUE AGORA</p>
+          <h2>Faça uma pequena alteração por conta própria</h2>
+          <p>Torne uma classe simples serializável, grave uma instância e leia-a de volta; observe um campo <code>transient</code>.</p>
+          <p class="task-check">Concluído quando: o programa compilar, produzir o resultado esperado e você conseguir explicar a regra aplicada.</p>
+        </section>
+        <section class="quick-check">
+          <p class="eyebrow-dark">CHECAGEM RÁPIDA · Serialização de objetos</p>
+          <h2>Um campo <code>static</code> faz parte do estado serializado de cada objeto?</h2>
+          <details class="answer-key"><summary>Conferir resposta comentada</summary><p>Não como estado da instância: <code>static</code> pertence à classe. Campos <code>transient</code> também são excluídos da serialização padrão; dados não confiáveis não devem ser desserializados sem proteção.</p></details>
+        </section>
+        <p class="glossary-link"><a href="../glossario.html">Consulte o glossário de termos Java ↗</a></p>
+      </section>
+<h2>Estude</h2>
+<ul><li><code>Serializable</code>, <code>ObjectOutputStream</code> e <code>ObjectInputStream</code>.</li><li>Serialização e desserialização de grafos de objetos e referências compartilhadas.</li><li>Campos <code>transient</code> e <code>static</code> e sua relação com o estado serializado.</li><li><code>serialVersionUID</code> e compatibilidade entre versões.</li><li>Exceções de I/O e classes não serializáveis contidas no grafo.</li><li><code>Externalizable</code> em nível conceitual e responsabilidades adicionais.</li><li>Cuidados de segurança: desserializar dados não confiáveis é perigoso.</li></ul>
+<h2>Prática</h2>
+<p>Serializar e recuperar um objeto simples; compare os valores de campos normais, <code>transient</code> e <code>static</code> antes e depois.</p>
+<section class="chapter-exam-fit">
+        <h2>Como este capítulo se relaciona com cada exame</h2>
+        <div class="exam-fit-grid"><div class="exam-fit"><span class="exam-version">1Z0-808 · Java 8</span><p>Fundamentos reaproveitáveis; valide APIs e objetivos específicos de Java 8.</p></div><div class="exam-fit"><span class="exam-version">1Z0-829 · Java 17</span><p>Base de estudo deste portal; confirme o mapeamento com o blueprint vigente.</p></div><div class="exam-fit"><span class="exam-version">1Z0-830 · Java 21</span><p>Conceitos úteis; confira APIs e requisitos atualizados de Java 21.</p></div></div>
+        <p class="matrix-note">Orientação editorial sobre reaproveitamento do material; não representa objetivos oficiais nem garante cobertura do exame. Consulte o <a href="../exames.html">comparativo e as fontes da Oracle</a>.</p>
+      </section>
+<section class="related-topics"><h2>Conecte com outros assuntos</h2><div class="related-grid"><a class="related-link" href="streams-readers-e-writers.html">Streams, readers e writers <span aria-hidden="true">→</span></a><a class="related-link" href="../03-poo/classes-objetos-e-encapsulamento.html">Classes, objetos e encapsulamento <span aria-hidden="true">→</span></a></div></section>
+<nav class="chapter-nav" aria-label="Navegação entre assuntos">
+          <a href="nio2-path-e-files.html">← Assunto anterior</a>
+          <a href="index.html">Voltar ao capítulo →</a>
+        </nav>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>

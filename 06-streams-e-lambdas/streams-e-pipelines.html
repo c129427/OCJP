@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b70">
+  <link rel="stylesheet" href="../site.css">
+  <title>Streams e pipelines | Guia de estudos OCJP</title>
+  <meta name="description" content="Criação de streams a partir de coleções, arrays, valores e `Stream.of`.">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">Java SE 17 <span aria-hidden="true">·</span> Guia OCJP</a>
+      <nav class="site-nav" aria-label="Navegação principal">
+        <a href="../index.html">Índice</a>
+        <a href="../resumo.html">Resumo</a>
+        <a href="../trilha-iniciante.html">Começar</a>
+        <a href="../quiz.html">Quiz</a>
+        <a href="../exames.html">Comparar exames</a>
+        <a href="../glossario.html">Glossário</a>
+      </nav>
+    </div>
+  </header>
+  <nav class="exam-strip" aria-label="Comparação entre exames">
+    <span>Compare:</span>
+    <a href="../exames.html#1z0-808">1Z0-808 · Java 8</a>
+    <a href="../exames.html#1z0-829">1Z0-829 · Java 17</a>
+    <a href="../exames.html#1z0-830">1Z0-830 · Java 21</a>
+  </nav>
+  <div class="page-shell">
+    <main class="content-card">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Capítulo 06 · Streams e expressões lambda</p>
+          <h1>Streams e pipelines</h1>
+          <p class="hero-description">Criação de streams a partir de coleções, arrays, valores e <code>Stream.of</code>.</p>
+          <ul class="badges" aria-label="Detalhes do conteúdo"><li class="badge">Fundamento essencial</li><li class="badge">Base: Java 17</li><li class="badge">1Z0-829</li></ul>
+
+        </div>
+      </div>
+      <article class="markdown-body">
+<a class="map-link" href="streams-e-pipelines.svg">
+          <img src="streams-e-pipelines.svg" alt="Miniatura do mapa mental: Streams e pipelines">
+          <span>Ver mapa mental deste assunto</span>
+        </a>
+<section class="learning-guide">
+        <div class="learning-objective"><span>OBJETIVO DE APRENDIZAGEM</span><p>Montar pipelines sem confundir operações intermediárias lazy com operações terminais.</p></div>
+        <p class="study-mode"><strong>Primeiro contato:</strong> aprenda o conceito e pratique antes de consultar os detalhes de prova. <a href="../trilha-iniciante.html#fundamentos">Voltar aos fundamentos</a> se algum termo ainda for novo.</p>
+
+        <p class="study-meta"><strong>Ritmo sugerido:</strong> 20–30 minutos · leia, execute o exemplo e tente a atividade antes de consultar referências.</p>
+        <p class="study-meta"><strong>Etapa anterior sugerida:</strong> <a href="interfaces-funcionais-lambdas-e-referencias.html">Interfaces funcionais, lambdas e method references</a><br><strong>Próximo recomendado:</strong> <a href="../09-io/nio2-path-e-files.html">NIO.2: <code>Path</code> e <code>Files</code></a></p>
+        <ol class="lesson-routine" aria-label="Roteiro da microaula">
+          <li>Leia o objetivo e localize a ideia principal no conteúdo abaixo.</li>
+          <li>Preveja o resultado, compile e execute o exemplo.</li>
+          <li>Faça a atividade sem copiar a solução e confira a checagem comentada.</li>
+        </ol>
+        <section class="example-panel">
+          <div class="example-heading"><div><p class="eyebrow-dark">EXEMPLO DE CONSOLE</p><h2>Veja a regra em execução</h2></div><a class="button-link" href="../src/06-streams-e-lambdas/streams-e-pipelines/StreamsEPipelinesExample.java" target="_blank" rel="noopener noreferrer">Abrir arquivo Java ↗</a></div>
+          <p>Antes de executar, anote sua previsão. Compile o exemplo com o JDK e compare a saída observada com as regras deste assunto.</p>
+          <details class="run-command"><summary>Comandos para compilar e executar</summary><pre><code>javac -d target/bin src/06-streams-e-lambdas/streams-e-pipelines/StreamsEPipelinesExample.java
+java -cp target/bin StreamsEPipelinesExample</code></pre><p>A execução imprime o resultado no console para você comparar com sua previsão.</p></details>
+          <details class="source-code"><summary>Consultar código-fonte: StreamsEPipelinesExample.java</summary><pre><code class="language-java">import java.util.List;
+
+public class StreamsEPipelinesExample {
+    public static void main(String[] args) {
+        System.out.println(&quot;=== Streams: pipeline de operacoes ===&quot;);
+        List&lt;String&gt; linguagens = List.of(&quot;Java&quot;, &quot;Kotlin&quot;, &quot;Java&quot;, &quot;C&quot;, &quot;JavaScript&quot;);
+        List&lt;String&gt; resultado = linguagens.stream()
+                .filter(linguagem -&gt; linguagem.length() &gt; 1)
+                .distinct()
+                .sorted()
+                .toList();
+        int somaDosPares = List.of(1, 2, 3, 4, 5, 6).stream()
+                .filter(numero -&gt; numero % 2 == 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+        System.out.println(&quot;Fonte original (nao e alterada pelo stream): &quot; + linguagens);
+        System.out.println(&quot;filter + distinct + sorted + toList: &quot; + resultado);
+        System.out.println(&quot;Stream.toList() devolve uma lista nao modificavel.&quot;);
+        System.out.println(&quot;Pipeline primitivo filter + mapToInt + sum: &quot; + somaDosPares);
+    }
+}
+</code></pre></details>
+        </section>
+        <section class="practice-task">
+          <p class="eyebrow-dark">PRATIQUE AGORA</p>
+          <h2>Faça uma pequena alteração por conta própria</h2>
+          <p>Filtre uma lista de números pares, transforme-os em seus quadrados e imprima o resultado após uma operação terminal.</p>
+          <p class="task-check">Concluído quando: o programa compilar, produzir o resultado esperado e você conseguir explicar a regra aplicada.</p>
+        </section>
+        <section class="quick-check">
+          <p class="eyebrow-dark">CHECAGEM RÁPIDA · Streams e pipelines</p>
+          <h2>Um <code>filter</code> executa o pipeline assim que é chamado?</h2>
+          <details class="answer-key"><summary>Conferir resposta comentada</summary><p>Não. <code>filter</code> é intermediária e lazy; uma operação terminal dispara a avaliação. Um stream já consumido não pode ser reutilizado.</p></details>
+        </section>
+        <p class="glossary-link"><a href="../glossario.html">Consulte o glossário de termos Java ↗</a></p>
+      </section>
+<h2>Estude</h2>
+<ul><li>Criação de streams a partir de coleções, arrays, valores e <code>Stream.of</code>.</li><li>Operações intermediárias lazy: <code>filter</code>, <code>map</code>, <code>flatMap</code>, <code>distinct</code>, <code>sorted</code>, <code>limit</code>, <code>skip</code> e <code>peek</code>.</li><li>Operações terminais: <code>forEach</code>, <code>count</code>, <code>min</code>, <code>max</code>, <code>reduce</code>, <code>toArray</code> e <code>collect</code>.</li><li>Streams de objetos e streams primitivos: <code>IntStream</code>, <code>LongStream</code> e <code>DoubleStream</code>.</li><li><code>mapToInt</code>, <code>boxed</code>, <code>average</code>, <code>sum</code>, <code>summaryStatistics</code> e operações relacionadas.</li><li>Curto-circuito com <code>anyMatch</code>, <code>allMatch</code>, <code>noneMatch</code>, <code>findFirst</code> e <code>findAny</code>.</li><li>Streams não são estruturas de armazenamento; não reutilize um stream já consumido.</li><li>Ordem, efeitos colaterais, pipeline vazio e operações paralelas.</li></ul>
+<h2>Verifique se consegue</h2>
+<ul><li>Identificar quais operações realmente executam o pipeline.</li><li>Calcular o resultado de <code>map</code>/<code>filter</code>/<code>reduce</code> sem confundir transformação com mutação da fonte.</li></ul>
+<section class="chapter-exam-fit">
+        <h2>Como este capítulo se relaciona com cada exame</h2>
+        <div class="exam-fit-grid"><div class="exam-fit"><span class="exam-version">1Z0-808 · Java 8</span><p>Lambdas e streams surgem no Java 8; confirme se pertencem ao exame-alvo.</p></div><div class="exam-fit"><span class="exam-version">1Z0-829 · Java 17</span><p>Base de estudo deste portal; confirme o mapeamento com o blueprint vigente.</p></div><div class="exam-fit"><span class="exam-version">1Z0-830 · Java 21</span><p>Conceitos úteis; valide as APIs e o escopo atualizado de Java 21.</p></div></div>
+        <p class="matrix-note">Orientação editorial sobre reaproveitamento do material; não representa objetivos oficiais nem garante cobertura do exame. Consulte o <a href="../exames.html">comparativo e as fontes da Oracle</a>.</p>
+      </section>
+<section class="related-topics"><h2>Conecte com outros assuntos</h2><div class="related-grid"><a class="related-link" href="collectors-e-optional.html">Collectors e <code>Optional</code> <span aria-hidden="true">→</span></a><a class="related-link" href="interfaces-funcionais-lambdas-e-referencias.html">Interfaces funcionais, lambdas e method references <span aria-hidden="true">→</span></a></div></section>
+<nav class="chapter-nav" aria-label="Navegação entre assuntos">
+          <a href="interfaces-funcionais-lambdas-e-referencias.html">← Assunto anterior</a>
+          <a href='collectors-e-optional.html'>Próximo assunto →</a>
+        </nav>
+      </article>
+    </main>
+  </div>
+  <footer class="site-footer">Guia independente de estudos para a certificação Java SE 17 Developer · Exame 1Z0-829</footer>
+</body>
+</html>
